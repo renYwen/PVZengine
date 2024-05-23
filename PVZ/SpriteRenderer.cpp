@@ -28,6 +28,7 @@ void SpriteRenderer::Render()
 
 void SpriteRenderer::Update()
 {
+	SceneComponent::Update();
 	if (!sprite)return;
 
 	if (copy)spriteInfo.size = Pair(copy->getwidth(), copy->getheight());

@@ -14,11 +14,11 @@ BattleLevel::BattleLevel()
 	background0->LoadSprite("bg0");
 	background0->SetLocalPosition(Vector2D(300, 300));
 
-	for (int i = 0; i < 500; i++) 
+	for (int i = 0; i < 100; i++) 
 	{
 		GameStatics::CreateObject<Sun>(Vector2D(Math::RandReal(-200,700), Math::RandReal(-10000,0)));
 	}
-	GameStatics::CreateObject<Sun>(Vector2D(-105,300));
+	GameStatics::CreateObject<Sun>(Vector2D(-108,300));
 
 	GameStatics::CreateObject<Platform>(Vector2D(200, 500));
 }

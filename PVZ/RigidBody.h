@@ -6,17 +6,9 @@
 //刚体组件
 class RigidBody final:public Component
 {
-	Vector2D velocity = Vector2D(0,0);
-	float maxSpeed = 1000.0f;
-	bool bMoveable = true;
-    float gravity = 98.f;
-	bool bGravityEnabled = true;
-	float angularVelocity = 0;
-	bool bRotatable = true;
-	float mass = 1.0f;
-
-	void RestrictVelocity(Vector2D impactNormal);
+	friend class Collider;
 public:
+	virtual ~RigidBody();
 	virtual void Update() override;
 
 	void SetGraivty(float gravity) { this->gravity = gravity; }
@@ -32,11 +24,24 @@ public:
 	void AddPulse(Vector2D pulse) { velocity += pulse/mass; }
 
 	//是否可移动
-	void SetMoveable(bool moveable) { this->bMoveable = moveable; }
+	void SetMoveable(bool moveable) { this->bMoveable = moveable;if(!moveable)velocity = Vector2D(0, 0); }
 	
 	//是否启用重力
 	void SetGravityEnabled(bool enabled) { this->bGravityEnabled = enabled; }
 	
 	//是否可旋转
-	void SetRotatable(bool rotatable) { this->bRotatable = rotatable; }
+	void SetRotatable(bool rotatable) { this->bRotatable = rotatable;if(!rotatable)angularVelocity = 0; }
+
+private:
+	Vector2D velocity = Vector2D(0, 0);
+	float maxSpeed = 1000.0f;
+	bool bMoveable = true;
+	float gravity = 98.f;
+	bool bGravityEnabled = true;
+	float angularVelocity = 0;
+	bool bRotatable = true;
+	float mass = 1.0f;
+
+	std::unordered_set<Collider*> colliders;
+	void RestrictVelocity(Vector2D impactNormal,RigidBody* another = nullptr);
 };

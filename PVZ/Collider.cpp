@@ -3,7 +3,7 @@
 #include "Camera.h"
 #include "Controller.h"
 #include "Math.h"
-
+#include "RigidBody.h"
 
 
 bool (*Collider::collisionJudgeMap[3])(Collider*, Collider*) = 
@@ -16,11 +16,20 @@ HitResult (*Collider::collisionHitMap[3])(Collider*, Collider*) =
 
 Collider::~Collider()
 {
+    if (rigidAttached)rigidAttached->colliders.erase(this);
     mainWorld.GameColliders.erase(this); Clear();
+}
+
+void Collider::BeginPlay()
+{
+    rigidAttached = pOwner->GetComponentByClass<RigidBody>();
+    if(rigidAttached)rigidAttached->colliders.insert(this);
 }
 
 void Collider::Update()
 {
+    SceneComponent::Update();
+
     if (mode == CollisionMode::None)return;
     Vector2D half;
     if (shape == ColliderShape::Circle)
@@ -41,6 +50,7 @@ void Collider::Update()
     for (int i = point.x; i <= point_1.x; ++i)for (int j = point.y; j <= point_1.y; ++j)mainWorld.ColliderZones[i][j].insert(this);
     //碰撞区块信息更新
 }
+
 
 const std::vector<Object*>& Collider::GetCollisions(CollisionType type)
 {
@@ -79,6 +89,7 @@ void Collider::Insert(Collider* another)
         if (another->mode == CollisionMode::Collision && this->mode == CollisionMode::Collision)
         {
             HitResult hitResult = this->CollisionHit(another);
+            if (rigidAttached)rigidAttached->RestrictVelocity(-hitResult.ImpactNormal, another->rigidAttached);
             OnComponentHit.BroadCast(this, another, another->pOwner,-hitResult.ImpactNormal,hitResult);
             another->OnComponentHit.BroadCast(another, this, pOwner, hitResult.ImpactNormal, {hitResult.ImpactPoint,-hitResult.ImpactNormal,pOwner,this});
         }

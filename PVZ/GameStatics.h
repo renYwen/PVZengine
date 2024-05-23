@@ -36,7 +36,6 @@ inline T* GameStatics::CreateObject(Vector2D pos)
 	{
 		mainWorld.GameObjects_to_add.push_back(pObj);
 		pObj->SetLocalPosition(pos);
-		pObj->BeginPlay();
 		return pObj;
 	}
 	delete pObj;

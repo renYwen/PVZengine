@@ -19,7 +19,6 @@ class Sprite :public Object
 
 public:
 	Sprite();
-	virtual void BeginPlay() { ; }
 	virtual void Update();
 	void LoadSprite(std::string name);
 	void Blink(float duration = 0.2f, COLORREF color = BLACK, int level = 60);

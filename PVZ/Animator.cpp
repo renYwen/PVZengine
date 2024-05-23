@@ -12,13 +12,16 @@ void Animation::Load(std::string name, Vector2D delta)
 }
 
 
+void Animator::BeginPlay()
+{
+	rendererAttached = pOwner->GetComponentByClass<SpriteRenderer>();
+}
+
 void Animator::Update()
 {
-	if (!rendererAttached)
-	{
-		rendererAttached = pOwner->GetComponentByClass<SpriteRenderer>();
-	}
-	else if(aniNode)
+	if (!rendererAttached)return;
+
+	if(aniNode)
 	{
 		IMAGE* sprite = aniNode->images[aniNode->index];
 		rendererAttached->sprite = sprite;

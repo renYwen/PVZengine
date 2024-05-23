@@ -23,7 +23,15 @@ float Camera::SmoothStep(float x)
 
 void Camera::Update()
 {
-	;
+	SceneComponent::Update();
+}
+
+void Camera::BeginPlay()
+{
+	transform_virtual.position = GetWorldPosition();
+	transform_virtual.rotation = GetWorldRotation();
+	springArmLength_virtual = springArmLength;
+	//初始化虚拟参数
 }
 
 void Camera::SetSmoothness(int smooth)
@@ -58,15 +66,6 @@ void Camera::ShakeCamera(int intensity,int decay)
 
 void Camera::Calculate()
 {
-	static bool first = true;
-	if (first) {
-		transform_virtual.position = GetWorldPosition();
-		transform_virtual.rotation = GetWorldRotation();
-		springArmLength_virtual = springArmLength;
-		first = false;
-	}//初始化虚拟参数
-
-
 	if (smoothness) {
 		transform_virtual.position = Lerp(transform_virtual.position, GetWorldPosition(),
 			0.1f/smoothness * SmoothStep(Vector2D::Distance(transform_virtual.position, GetWorldPosition())/distanceThreshold));
@@ -99,4 +98,5 @@ void Camera::Calculate()
 			shakeSpeed = -shakeSpeed; AddPosition(shakeSpeed); transform_virtual.position += shakeSpeed;
 		}
 	}
+	//相机抖动
 }

@@ -93,6 +93,24 @@ Vector2D SceneComponent::GetWorldScale() const
 
 
 
+void Object::Update()
+{
+	components_iter = components.begin();
+	while (components_iter != components.end())
+	{
+		(*components_iter)->Update();
+		if (components_iter != components.end())components_iter++;
+	}
+}
+
+void Object::BeginPlay()
+{
+	for (auto&it : components)
+	{
+		it->BeginPlay();
+	}
+}
+
 void Object::AttachTo(Object* par)
 {
 	if (par) {
@@ -182,7 +200,11 @@ void World::Update()
 	currentLevel->Update();
 
 	for (auto& obj : GameObjects)obj->Update();
-	for (auto& obj : GameObjects_to_add)GameObjects.insert(obj);
+	for (auto& obj : GameObjects_to_add)
+	{
+		GameObjects.insert(obj);
+		obj->BeginPlay();
+	}
 	GameObjects_to_add.clear();
 	for (auto& obj : GameObjects_to_delete) 
 	{

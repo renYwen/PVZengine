@@ -38,6 +38,7 @@ class Animator final: public Component
 	class SpriteRenderer* rendererAttached = nullptr;//¸½×ÅµÄäÖÈ¾Æ÷
 
 public:
+	virtual void BeginPlay() override;
 	virtual void Update() override;
 
 	void Insert(std::string name, Animation& ani);

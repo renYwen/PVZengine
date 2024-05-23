@@ -14,6 +14,8 @@ class Camera final:public SceneComponent
 public:
 	virtual void Update()override;
 
+	virtual void BeginPlay()override;
+
 	//ÉèÖÃÖ÷ÉãÏñ»ú
 	void SetMainCamera()
 	{

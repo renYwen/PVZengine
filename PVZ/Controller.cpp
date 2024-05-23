@@ -15,6 +15,7 @@ Controller::Controller()
 
 void Controller::BeginPlay()
 {
+	Object::BeginPlay();
 	SetupInputComponent(inputComponent);
 }
 

@@ -198,7 +198,7 @@ public:
 	std::string GetName()const { return name; }
 	void SetName(const std::string& name) { this->name = name; }
 	virtual void Update() = 0;
-	//virtual void BeginPlay() = 0;
+	virtual void BeginPlay() = 0;
 };
 
 
@@ -209,12 +209,9 @@ class Component : public Base
 protected:
 	class Object* pOwner = nullptr;//处理控制逻辑
 public:
-	virtual void Update() override { ; }
+	virtual void Update() {}
 
-	/*virtual void BeginPlay() override
-	{
-		;
-	}*/
+	virtual void BeginPlay(){}
 
 	//设置绑定对象
 	void SetOwner(class Object* owner) { pOwner = owner; }
@@ -245,15 +242,15 @@ struct Transform
 //场景组件基类
 class SceneComponent : public Component
 {
-	Transform transform;
-
+	Transform transform_local;
 	std::unordered_set<SceneComponent*>children;
 	SceneComponent* parent = nullptr;//处理场景属性关系 并且 便于增删
 
 	void process_Destruct();
 
+
 public:
-	virtual void Update() override { ; }
+	virtual void Update() override {}
 
 	//设置所属组件
 	void AttachTo(SceneComponent* par);
@@ -265,20 +262,20 @@ public:
 	virtual void Destruct() override;
 
 
-	Vector2D GetLocalPosition() const { return transform.position; }
-	float GetLocalRotation() const { return transform.rotation; }
-	Vector2D GetLocalScale() const { return transform.scale; }
+	const Vector2D& GetLocalPosition() const { return transform_local.position; }
+	float GetLocalRotation() const { return transform_local.rotation; }
+	const Vector2D& GetLocalScale() const { return transform_local.scale; }
 
 	Vector2D GetWorldPosition() const;
 	float GetWorldRotation() const;
 	Vector2D GetWorldScale() const;
 
-	void SetLocalPosition(const Vector2D& pos) { transform.position = pos; }
-	void SetLocalRotation(float angle) { transform.rotation = angle; }
-	void SetLocalScale(const Vector2D& scale) { transform.scale = scale; }
+	void SetLocalPosition(const Vector2D& pos) { transform_local.position = pos; }
+	void SetLocalRotation(float angle) { transform_local.rotation = angle; }
+	void SetLocalScale(const Vector2D& scale) { transform_local.scale = scale; }
 
-	void AddPosition(Vector2D pos) { transform.position += pos; }
-	void AddRotation(float rot) { transform.rotation += rot; }
+	void AddPosition(Vector2D pos) { transform_local.position += pos; }
+	void AddRotation(float rot) { transform_local.rotation += rot; }
 };
 
 
@@ -304,17 +301,9 @@ public:
 	}
 
 
-	virtual void Update()override
-	{
-		components_iter = components.begin();
-		while (components_iter != components.end())
-		{
-			(*components_iter)->Update(); 
-			if (components_iter != components.end())components_iter++;
-		}
-	}
+	virtual void Update()override;
 
-	virtual void BeginPlay() { ; }
+	virtual void BeginPlay()override;
 
 	//设置场景根组件
 	void SetRootComponent(SceneComponent*newRoot)
@@ -371,9 +360,9 @@ public:
 	//从mainWorld里删除对象
 	void Destroy();
 
-	Vector2D GetLocalPosition() const{ return root->GetLocalPosition(); }
+	const Vector2D& GetLocalPosition() const{ return root->GetLocalPosition(); }
 	float GetLocalRotation() const { return root->GetLocalRotation(); }
-	Vector2D GetLocalScale() const { return root->GetLocalScale(); }
+	const Vector2D& GetLocalScale() const { return root->GetLocalScale(); }
 
 	Vector2D GetWorldPosition()const;
 	float GetWorldRotation()const;
@@ -408,10 +397,10 @@ public:
 		;
 	}
 
-	/*virtual void BeginPlay() override
+	virtual void BeginPlay() override
 	{
 		;
-	}*/
+	}
 };
 
 

@@ -39,6 +39,8 @@ void Particle::Load(std::string name)
 
 void Particle::Update()
 {
+	SceneComponent::Update();
+
 	if (particles.size() < capacity)
 	{
 		if(interval == 0)for (int i = 0; i < capacity; i++)Produce();

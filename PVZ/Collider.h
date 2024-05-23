@@ -53,7 +53,9 @@ public:
 	Collider():type(CollisionType::Default) { mainWorld.GameColliders.insert(this); }
 	virtual ~Collider();
 
+	virtual void BeginPlay() override;
 	virtual void Update() override;
+
 
 	/* 获取正在和该碰撞体发生碰撞的某一指定碰撞类型的所有碰撞体指针，以数组形式返回 */
 	const std::vector<Object*>& GetCollisions(CollisionType type);
@@ -112,6 +114,9 @@ private:
 	static HitResult collisionHitCircleToCircle(Collider* c1, Collider* c2);
 	static HitResult collisionHitCircleToBox(Collider* c1, Collider* c2);
 	static HitResult collisionHitBoxToBox(Collider* c1, Collider* c2);
+
+
+	class RigidBody* rigidAttached = nullptr;//附着的刚体
 };
 
 
