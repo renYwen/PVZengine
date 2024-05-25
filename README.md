@@ -14,11 +14,16 @@ xmlns="http://www.w3.org/TR/REC-html40">
  <o:DocumentProperties>
   <o:Author>&#22869;&#38395; &#20219;</o:Author>
   <o:LastAuthor>&#22869;&#38395; &#20219;</o:LastAuthor>
-  <o:Revision>3</o:Revision>
-  <o:TotalTime>1</o:TotalTime>
+  <o:Revision>5</o:Revision>
+  <o:TotalTime>3</o:TotalTime>
   <o:Created>2024-05-25T02:47:00Z</o:Created>
-  <o:LastSaved>2024-05-25T02:48:00Z</o:LastSaved>
+  <o:LastSaved>2024-05-25T02:54:00Z</o:LastSaved>
   <o:Pages>1</o:Pages>
+  <o:Words>11</o:Words>
+  <o:Characters>67</o:Characters>
+  <o:Lines>1</o:Lines>
+  <o:Paragraphs>1</o:Paragraphs>
+  <o:CharactersWithSpaces>77</o:CharactersWithSpaces>
   <o:Version>16.00</o:Version>
  </o:DocumentProperties>
  <o:OfficeDocumentSettings>
@@ -47,6 +52,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
    <w:SplitPgBreakAndParaMark/>
    <w:UseFELayout/>
   </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
   <m:mathPr>
    <m:mathFont m:val="Cambria Math"/>
    <m:brkBin m:val="before"/>
@@ -688,6 +694,9 @@ p.msonormal0, li.msonormal0, div.msonormal0
 	font-family:"Times New Roman",serif;
 	mso-fareast-font-family:DengXian;
 	mso-fareast-theme-font:minor-fareast;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
 .MsoChpDefault
 	{mso-style-type:export-only;
 	mso-default-props:yes;
@@ -736,7 +745,8 @@ div.WordSection1
 
 <div class=WordSection1>
 
-<p class=MsoNormal><span lang=EN-US style='mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+<p class=MsoNormal><span lang=EN-US>A very simple 2D game engine for &#8220;<span
+class=SpellE>PlantVsZombies</span>&#8221;,consisting of C++ entirely.</span></p>
 
 </div>
 

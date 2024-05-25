@@ -25,6 +25,7 @@ BattleLevel::BattleLevel()
 
 void BattleLevel::Update()
 {
+
 }
 
 
