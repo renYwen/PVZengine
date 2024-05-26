@@ -15,7 +15,7 @@ public:
 	{
 		collider = ConstructComponent<BoxCollider>();
 		collider->AttachTo(root);
-		collider->SetSize(Vector2D(600, 50));
+		collider->SetSize(Vector2D(1600, 50));
 		collider->SetCollisonMode(CollisionMode::Collision);
 		collider->SetType(CollisionType::Platform);
 	}
@@ -23,5 +23,10 @@ public:
 	virtual void Update() override
 	{
 		Object::Update();
+	}
+
+	void SetSize(Vector2D size)
+	{
+		collider->SetSize(size);
 	}
 };

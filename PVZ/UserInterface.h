@@ -29,7 +29,7 @@ public:
 			return gameWid;
 		}
 		delete gameWid;
-		return gameWid;
+		return nullptr;
 	}
 
 	

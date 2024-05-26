@@ -88,7 +88,7 @@ public:
 	void SetUIPattern(UIPattern pattern);
 	UIPattern GetUIPattern()const { return uiPattern; }
 	void SetInfoBox(bool showInfo) { bInfoBox = showInfo; }
-	void SetInfoText(std::string text) { bInfoBox = true; }
+	void SetInfoText(std::string text) { InfoText.SetCharacters(text); }
 
 	virtual Vector2D GetSize() const;
 	void SetSize(Vector2D size) {this->size = size; }

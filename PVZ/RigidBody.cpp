@@ -58,7 +58,7 @@ void RigidBody::RestrictVelocity(Vector2D impactNormal, RigidBody* another)
 		{
 			float multiplier = (tangentVelocity.Size() - normalVelocity.Size()*friction) / tangentVelocity.Size();
 			multiplier = Math::Clamp(multiplier, 0.0f, 1.0f);
-			velocity = tangentVelocity * multiplier;
+			velocity = tangentVelocity * multiplier - normalVelocity;
 		}
 		return;
 	}
@@ -68,9 +68,9 @@ void RigidBody::RestrictVelocity(Vector2D impactNormal, RigidBody* another)
 
 
 	/* 弹性碰撞处理逻辑 */
-	if(Vector2D::DotProduct(normalVelocity-anotherNormalVelocity, impactNormal) >= 0)return;//确保有相碰的趋势
+	if(Vector2D::DotProduct(normalVelocity - anotherNormalVelocity, impactNormal) >= 0)return;//确保有相碰的趋势
 
-	float restitution = 0.25f; // 弹性碰撞系数
+	float restitution = 1.f; // 弹性碰撞系数
 
 	Vector2D normalVelocity_ = normalVelocity;
 	normalVelocity = ((mass - restitution * another->mass) * normalVelocity + (1 + restitution) * another->mass * anotherNormalVelocity) / (mass + another->mass);

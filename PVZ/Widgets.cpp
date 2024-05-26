@@ -136,9 +136,9 @@ void Widget::Update()
 {
 	if (uiPattern != UIPattern::VisibleAndInteractive)return;
 
-	Vector2D pos = GetScreenPosition() - GetSize();
+	Vector2D pos = GetScreenPosition() - GetSize()/2;
 	Pair newPoint(Math::Clamp(int(pos.x) / 100, 0, 7), Math::Clamp(int(pos.y) / 100, 0, 5));
-	pos += size * 2;
+	pos += size;
 	Pair newPoint_1(Math::Clamp(int(pos.x) / 100, 0, 7), Math::Clamp(int(pos.y) / 100, 0, 5));
 	if (newPoint == point && newPoint_1 == point_1)return;
 

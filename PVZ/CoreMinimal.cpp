@@ -212,7 +212,7 @@ void World::Update()
 		delete obj;
 	}
 	GameObjects_to_delete.clear();
-	for (auto& obj : GameUIs)GameUIs.insert(obj);
+	for (auto& obj : GameUIs)obj->Update();
 	for (auto& obj : GameUIs_to_delete)
 	{
 		GameUIs.erase(obj);
