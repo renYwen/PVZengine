@@ -11,6 +11,12 @@ void Animation::Load(std::string name, Vector2D delta)
 	offset = delta;
 }
 
+void Animation::Tick()
+{
+	index = (index + 1) % num; 
+	if (notifications.find(index) != notifications.end())notifications[index].Execute();
+}
+
 
 void Animator::BeginPlay()
 {

@@ -79,14 +79,14 @@ public:
 
 
 
-template<typename F, typename ...Args>
-inline F UnicastDelegate<F, Args...>::Execute(Args ...args)
+template<typename R, typename ...Args>
+inline R UnicastDelegate<R, Args...>::Execute(Args ...args)
 {
     if (callback)
     {
         return callback(args...);
     }
-    return F();
+    return R();
 }
 
 

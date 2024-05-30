@@ -3,10 +3,16 @@
 #include"easyx.h"
 #include"Timer.h"
 #include<unordered_map>
+#include"Delegate.h"
+
+
+
+//动画委托
+DECLARE_NO_PARAM_UNICAST_DELEGATE_CLASS(AnimationDelegate)
 
 
 //动画源
-class Animation
+class Animation final
 {
     friend class Animator;
 
@@ -17,14 +23,23 @@ class Animation
 
 	Timer clock;//计时器
 
+	std::unordered_map<int, AnimationDelegate>notifications;//自定义动画通知
+
 public:
-	Animation() { clock.Bind(0, [this](){index = (index + 1) % num; }, true); }
+	Animation() { clock.Bind(0, this, &Animation::Tick, true); clock.Stop(); }
 
 	void Load(std::string name, Vector2D delta = {0,0});
 
+	void Tick();
+
+	//设置动画帧间隔时间
 	void SetInterval(double interval) { clock.SetDelay(interval); }
 
+	//设置下标
 	void SetIndex(int i) { index = i; }
+
+	//在指定帧处添加动画通知
+	void AddNotification(int index, AnimationDelegate& event) { notifications.insert({ index,event }); }
 };
 
 
@@ -45,7 +60,9 @@ public:
 
 	Animation* GetNode()const {return aniNode;}
 
+	//设置动画节点
 	void SetNode(std::string nodeName);
 
+	//设置动画是否播放
 	void SetCalled(bool called);
 };

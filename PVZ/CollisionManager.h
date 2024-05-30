@@ -5,8 +5,9 @@
 enum class CollisionType:uint8_t
 {
 	Default,
-	Sunshine,
-	Platform
+	Plant,
+	Bullet,
+	Zombie
 };
 
 //Åö×²¹ÜÀíÆ÷

@@ -64,13 +64,14 @@ const std::vector<Object*>& Collider::GetCollisions(CollisionType type)
 
 void Collider::SetCollisonMode(CollisionMode mode)
 {
-    if(mode == CollisionMode::None)Clear();
+    if(mode == CollisionMode::None)mainWorld.GameColliders_to_clear.insert(this);
     this->mode = mode;
 }
 
 void Collider::Clear()
 {
-    for (auto& another : collisions) {
+    for (auto& another : collisions) 
+    {
         another->collisions.erase(this); 
         if (another->mode == CollisionMode::Collision && this->mode == CollisionMode::Collision)continue;
         OnComponentEndOverlap.BroadCast(this,another,another->pOwner); another->OnComponentEndOverlap.BroadCast(another,this,pOwner);

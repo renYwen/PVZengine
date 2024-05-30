@@ -462,6 +462,7 @@ class World final
 	/*  äÖÈ¾¡¢Åö×²¼ÆËã¡¢UIÊó±ê¼ì²âÈİÆ÷ */
 	std::set<class LayerInterface*, LayerSort>GameRenderers;
 	std::unordered_set<class Collider*>GameColliders;
+	std::unordered_set<class Collider*>GameColliders_to_clear;
 	std::set<class Collider*, ColliderSort>ColliderZones[8][6];
 	std::set<class LayerInterface*, LayerSort>UIDetectZones[8][6];
 

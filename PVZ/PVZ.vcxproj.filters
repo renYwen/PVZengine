@@ -37,6 +37,30 @@
     <Filter Include="Engine\Manager">
       <UniqueIdentifier>{5fc587ec-76a9-4842-9b7f-3de7503a31ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\头文件\Base">
+      <UniqueIdentifier>{ef106415-b193-4726-8b8c-38ae9f563ecd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\源文件\Base">
+      <UniqueIdentifier>{0eb11554-4f14-4da0-bb4f-ca035243b966}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\头文件\Plants">
+      <UniqueIdentifier>{991e10a0-b57a-47d3-90b4-651e165b8aa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\源文件\Plants">
+      <UniqueIdentifier>{ed695356-16cf-463d-9e33-a48e4185bcba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\头文件\Bullets">
+      <UniqueIdentifier>{4c237604-da23-4554-a91a-e74f818f9fbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\源文件\Bullets">
+      <UniqueIdentifier>{cc80adb0-fdc7-49ad-b168-26eafdf008b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\头文件\Zombies">
+      <UniqueIdentifier>{683a76d4-a43f-4781-b918-879df6195486}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\源文件\Zombies">
+      <UniqueIdentifier>{6c149188-2641-48c4-a2ff-367ddd724ff6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CoreMinimal.h">
@@ -96,9 +120,6 @@
     <ClInclude Include="ResourceManager.h">
       <Filter>Engine\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Platform.h">
-      <Filter>Project\头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Particle.h">
       <Filter>Engine\Components</Filter>
     </ClInclude>
@@ -107,6 +128,24 @@
     </ClInclude>
     <ClInclude Include="Delegate.h">
       <Filter>Engine\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="BasePlant.h">
+      <Filter>Project\头文件\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseBullet.h">
+      <Filter>Project\头文件\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="PeaShooter.h">
+      <Filter>Project\头文件\Plants</Filter>
+    </ClInclude>
+    <ClInclude Include="Pea.h">
+      <Filter>Project\头文件\Bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseZombie.h">
+      <Filter>Project\头文件\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalZombie.h">
+      <Filter>Project\头文件\Zombies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +208,24 @@
     </ClCompile>
     <ClCompile Include="UserInterface.cpp">
       <Filter>Engine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="BasePlant.cpp">
+      <Filter>Project\源文件\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="PeaShooter.cpp">
+      <Filter>Project\源文件\Plants</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseBullet.cpp">
+      <Filter>Project\源文件\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Pea.cpp">
+      <Filter>Project\源文件\Bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseZombie.cpp">
+      <Filter>Project\源文件\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalZombie.cpp">
+      <Filter>Project\源文件\Zombies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

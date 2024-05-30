@@ -29,13 +29,13 @@ public:
 		collider->AttachTo(root);
 		collider->SetRadius(35);
 		collider->SetCollisonMode(CollisionMode::Collision);
-		collider->SetType(CollisionType::Sunshine);
+		/*collider->SetType(CollisionType::Sunshine)*/;
 
 		rigidbody = ConstructComponent<RigidBody>();
 
 		/*collider->OnComponentBeginOverlap.AddDynamic(this, &Sun::OnOverlap);*/
 	/*	collider->OnComponentBeginOverlap.RemoveDynamic(this, &Sun::OnOverlap);*/
-	/*	collider->OnComponentHit.AddDynamic(this, &Sun::OnHit);*/
+		collider->OnComponentHit.AddDynamic(this, &Sun::OnHit);
 	}
 
 	void OnOverlap(Collider* overlapComp, Collider* otherComp, Object* otherActor)
@@ -45,7 +45,7 @@ public:
 	}
 	void OnHit(Collider* hitComp, Collider* otherComp, Object* otherActor, Vector2D hitNormal, const HitResult& hitResult)
 	{
-		if(otherComp->GetType() == CollisionType::Sunshine)return;
+		/*if(otherComp->GetType() == CollisionType::Sunshine)return;*/
 		std::cout << "SunShine Hit" << "   :  ";
 		std::cout << otherActor->GetName() << std::endl;
 	}

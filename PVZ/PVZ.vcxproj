@@ -128,6 +128,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animator.h" />
+    <ClInclude Include="BaseBullet.h" />
+    <ClInclude Include="BasePlant.h" />
+    <ClInclude Include="BaseZombie.h" />
     <ClInclude Include="BattleController.h" />
     <ClInclude Include="BattleLevel.h" />
     <ClInclude Include="Camera.h" />
@@ -139,8 +142,10 @@
     <ClInclude Include="GameStatics.h" />
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="NormalZombie.h" />
     <ClInclude Include="Particle.h" />
-    <ClInclude Include="Platform.h" />
+    <ClInclude Include="Pea.h" />
+    <ClInclude Include="PeaShooter.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="Sprite.h" />
@@ -153,6 +158,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animator.cpp" />
+    <ClCompile Include="BaseBullet.cpp" />
+    <ClCompile Include="BasePlant.cpp" />
+    <ClCompile Include="BaseZombie.cpp" />
     <ClCompile Include="BattleController.cpp" />
     <ClCompile Include="BattleLevel.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -164,7 +172,10 @@
     <ClCompile Include="GameStatics.cpp" />
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="Math.cpp" />
+    <ClCompile Include="NormalZombie.cpp" />
     <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="Pea.cpp" />
+    <ClCompile Include="PeaShooter.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="Sprite.cpp" />

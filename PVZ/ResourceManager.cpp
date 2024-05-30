@@ -11,9 +11,24 @@ void ResourceManager::Initialize()
 
 	Load("sunshine_1", "res/animations/bullets/sun.png", 483, 160, 12, 2, 6);
 
+	
+
+
+
+
+	//植物动画资源
+	Load("peashooter", "res/animations/plants/peashooter.png", 483, 320, 24, 4, 6);
+
+
+
+	//子彈資源
+	Load("pea", "res/animations/bullets/pea.png",28,28);
+
+
+	//僵尸資源
 	Load("normalwalk", "res/animations/zombies/normal/walk.png", 1000, 695, 46, 5, 10);
 
-	Load("mineparticle", "res/animations/effects/PotatoMine_particles.png", 138, 26, 6, 1, 6);
+	Load("zombiedie", "res/animations/zombies/die.png", 166, 1440, 10, 10, 1);
 }
 
 

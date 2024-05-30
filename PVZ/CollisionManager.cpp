@@ -4,8 +4,8 @@
 void CollisionManager::Initialize()
 {
 	/* Åö×²±í½¨Á¢ */
-	AddMapping(CollisionType::Platform, CollisionType::Sunshine);
-	AddMapping(CollisionType::Sunshine, CollisionType::Sunshine);
+	AddMapping(CollisionType::Bullet,CollisionType::Zombie);
+	AddMapping(CollisionType::Plant, CollisionType::Zombie);
 }
 
 
