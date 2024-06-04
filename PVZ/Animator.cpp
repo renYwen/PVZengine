@@ -3,6 +3,12 @@
 #include"SpriteRenderer.h"
 
 
+void Animation::Tick()
+{
+	index = (index + 1) % num;
+	if (notifications.find(index) != notifications.end())notifications[index].Execute();
+}
+
 void Animation::Load(std::string name, Vector2D delta)
 {
 	AnimationResource aniRes = mainWorld.resourcePool->FetchAnimation(name);
@@ -11,13 +17,6 @@ void Animation::Load(std::string name, Vector2D delta)
 	offset = delta;
 }
 
-void Animation::Tick()
-{
-	index = (index + 1) % num; 
-	if (notifications.find(index) != notifications.end())notifications[index].Execute();
-}
-
-
 void Animator::BeginPlay()
 {
 	rendererAttached = pOwner->GetComponentByClass<SpriteRenderer>();
@@ -25,14 +24,18 @@ void Animator::BeginPlay()
 
 void Animator::Update()
 {
-	if (!rendererAttached)return;
+	if (!rendererAttached||!aniNode)return;
 
-	if(aniNode)
+	static IMAGE* currentSprite = nullptr;
+	IMAGE* sprite = aniNode->images[aniNode->index];
+	if (currentSprite != sprite)
 	{
-		IMAGE* sprite = aniNode->images[aniNode->index];
+		currentSprite = sprite;
 		rendererAttached->sprite = sprite;
 		rendererAttached->spriteInfo.offset = aniNode->offset;
 		rendererAttached->spriteInfo.endLoc = { sprite->getwidth(), sprite->getheight() };
+	
+		rendererAttached->DealImage();
 	}
 }
 

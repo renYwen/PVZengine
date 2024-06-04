@@ -1,5 +1,6 @@
 #include "BaseZombie.h"
 #include"Collider.h"
+#include"BasePlant.h"
 
 
 BaseZombie::BaseZombie()
@@ -23,11 +24,18 @@ BaseZombie::BaseZombie()
 	die.AddNotification(9, dieEvent);
 }
 
+void BaseZombie::BeginPlay()
+{
+	Sprite::BeginPlay();
+	box->OnComponentBeginOverlap.AddDynamic(this,&BaseZombie::OnOverlap);
+	box->OnComponentEndOverlap.AddDynamic(this,&BaseZombie::EndOverlap);
+}
+
 void BaseZombie::Update()
 {
 	Sprite::Update();
 
-	if(blood>0)AddPosition({-speed,0});
+	if(blood > 0 && state == ZombieState::Walking)AddPosition({-speed,0});
 }
 
 void BaseZombie::GetDamage(float damage)
@@ -38,5 +46,39 @@ void BaseZombie::GetDamage(float damage)
 	if (blood <= 0)
 	{
 		ani->SetNode("die");
+	}
+}
+
+
+void BaseZombie::OnOverlap(Collider* overlapComp, Collider* otherComp, Object* otherActor)
+{
+	if (otherComp->GetType() != CollisionType::Plant)return;
+
+	overlapPlants.insert(otherActor);
+
+	if (state == ZombieState::Walking)
+	{
+		state = ZombieState::Standing;
+		ani->SetNode("eat");
+		eatingPlant = Cast<BasePlant>(otherActor);
+	}
+
+}
+
+void BaseZombie::EndOverlap(Collider* overlapComp, Collider* otherComp, Object* otherActor)
+{
+	if (otherComp->GetType() != CollisionType::Plant)return;
+
+	overlapPlants.erase(otherActor);
+	
+	if (overlapPlants.empty()) 
+	{ 
+		state = ZombieState::Walking; 
+		ani->SetNode("walk"); 
+		eatingPlant = nullptr;
+	}
+	else
+	{
+		eatingPlant = Cast<BasePlant>(*overlapPlants.begin());
 	}
 }

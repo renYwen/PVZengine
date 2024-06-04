@@ -4,6 +4,16 @@
 
 
 
+void SpriteRenderer::DealImage()
+{
+	if (GetWorldRotation() != angle)
+	{
+		angle = GetWorldRotation();
+		RotateImage(PI * angle / 180);
+	}
+	if (filterLayers.size() > 0)FilterImage();
+}
+
 void SpriteRenderer::Render()
 {
 	if (!sprite)return;
@@ -38,8 +48,8 @@ void SpriteRenderer::Update()
 	{
 		angle = GetWorldRotation();
 		RotateImage(PI * angle / 180);
+		if (filterLayers.size() > 0)FilterImage();
 	}
-	if (filterLayers.size() > 0)FilterImage();
 }
 
 

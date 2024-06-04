@@ -99,9 +99,6 @@
     <ClInclude Include="Animator.h">
       <Filter>Engine\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Sun.h">
-      <Filter>Project\头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Collider.h">
       <Filter>Engine\Components</Filter>
     </ClInclude>
@@ -146,6 +143,12 @@
     </ClInclude>
     <ClInclude Include="NormalZombie.h">
       <Filter>Project\头文件\Zombies</Filter>
+    </ClInclude>
+    <ClInclude Include="SunFlower.h">
+      <Filter>Project\头文件\Plants</Filter>
+    </ClInclude>
+    <ClInclude Include="Sun.h">
+      <Filter>Project\头文件\Bullets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +229,12 @@
     </ClCompile>
     <ClCompile Include="NormalZombie.cpp">
       <Filter>Project\源文件\Zombies</Filter>
+    </ClCompile>
+    <ClCompile Include="Sun.cpp">
+      <Filter>Project\源文件\Bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="SunFlower.cpp">
+      <Filter>Project\源文件\Plants</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

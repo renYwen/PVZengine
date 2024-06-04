@@ -4,8 +4,8 @@
 #include"Camera.h"
 #include"Controller.h"
 #include"Collider.h"
+#include"UserInterface.h"
 #include<stack>
-#include "UserInterface.h"
 
 
 
@@ -228,16 +228,16 @@ void World::Update()
 
 void World::ProcessColliders() 
 {
-	for (auto& it : GameColliders_to_clear)it->Clear();
-	GameColliders_to_clear.clear();
-	//碰撞体移除更新
-
 	for (auto& arr_i : ColliderZones)for (auto& arr_j : arr_i) if (!arr_j.empty())
 		for (auto& me : arr_j)for (auto& he : arr_j) if (he != me) me->Insert(he);
 	//碰撞插入信息更新
 
 	for (auto& it : GameColliders)it->Erase();
 	//碰撞删除信息更新
+
+	for (auto& it : GameColliders_to_clear)it->Clear();
+	GameColliders_to_clear.clear();
+	//碰撞体移除更新
 }
 
 

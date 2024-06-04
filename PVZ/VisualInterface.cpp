@@ -84,14 +84,16 @@ void ImageInterface::FilterImage()
 
 	for (int i = 0; i < num; ++i)
 	{
-		if (pBuf[i]>>24) {
+		if (pBuf[i]>>24)
+		{
 			// 获取BGR
 			uint32 pNewBufB = pBuf[i] & 0xFF;
 			uint32 pNewBufG = (pBuf[i] & 0xFF00) >> 8;
 			uint32 pNewBufR = (pBuf[i] & 0xFF0000) >> 16;
 
 			// 将颜色值进行平均化
-			for (auto& filterInfo : filterLayers) {
+			for (auto& filterInfo : filterLayers) 
+			{
 				int level = filterInfo.level;
 				if(pBuf[i]>>24 < 250)level = (pBuf[i] >> 24)*level>>8;//使得颜色滤镜从低透明度到高透明度平滑过渡
 				pNewBufB = (pNewBufB * (128 - level) + level * GetBValue(filterInfo.color))>>7;
@@ -113,12 +115,14 @@ void ImageInterface::SetFilter(bool enable,COLORREF col, int level)
 	{
 		level = Math::Clamp(level, 0, 100);
 		filterLayers.insert(FilterInfo{ col, level});
+		FilterImage();
 	}
 }
 
 void ImageInterface::AddFilter(FilterInfo filterInfo)
 {
 	filterLayers.insert(filterInfo);
+	FilterImage();
 }
 
 void ImageInterface::RemoveFilter()

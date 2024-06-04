@@ -5,6 +5,7 @@
 BattleController::BattleController()
 {
 	camera = GetComponentByClass<Camera>();
+	SetLocalPosition(Vector2D(0.f, 300.f));
 }
 
 void BattleController::SetupInputComponent(InputComponent* inputComponent)

@@ -44,7 +44,8 @@ void Particle::Update()
 	if (particles.size() < capacity)
 	{
 		if(interval == 0)for (int i = 0; i < capacity; i++)Produce();
-		else if(duration<float>(steady_clock::now() - lastTime).count() >= interval){
+		else if(duration<float>(steady_clock::now() - lastTime).count() >= interval)
+		{
 			Produce();lastTime = steady_clock::now();
 		}
 
@@ -52,9 +53,12 @@ void Particle::Update()
 	}//生产管理
 
 
-	if (particles.size()) {
-		if (interval == 0) {
-			if (duration<float>(steady_clock::now() - particles.begin()->lastTime).count() >= lifeCycle) {
+	if (particles.size()) 
+	{
+		if (interval == 0) 
+		{
+			if (duration<float>(steady_clock::now() - particles.begin()->lastTime).count() >= lifeCycle)
+			{
 				particles.clear();
 			}
 			else if (fadingTime && duration<float>(steady_clock::now() - particles.begin()->lastTime).count() 
@@ -63,7 +67,8 @@ void Particle::Update()
 				for (auto &each : particles)each.alpha -= alpha * DELTA_TIME / fadingTime;
 			}
 		}
-		else if (duration<float>(steady_clock::now() - particles.begin()->lastTime).count() >= lifeCycle) {
+		else if (duration<float>(steady_clock::now() - particles.begin()->lastTime).count() >= lifeCycle) 
+		{
 			particles.pop_front();
 		}
 	}//销毁逻辑

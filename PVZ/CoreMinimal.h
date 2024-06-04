@@ -391,13 +391,19 @@ class GameInstance
 //ÓÎÏ·¹Ø¿¨
 class Level :public Base
 {
+	class Controller* mainController = nullptr;
 public:
-	virtual void Update() override
+	Level()
+	{
+	
+	}
+
+	virtual void BeginPlay() override
 	{
 		;
 	}
 
-	virtual void BeginPlay() override
+	virtual void Update() override
 	{
 		;
 	}

@@ -14,3 +14,11 @@ BasePlant::BasePlant()
 
 	ani = ConstructComponent<Animator>();
 }
+
+void BasePlant::TakeDamage(float damage)
+{
+	blood -= damage;
+	Blink(0.2f, WHITE);
+
+	if (blood <= 0)Destroy();
+}

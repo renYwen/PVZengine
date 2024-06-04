@@ -151,6 +151,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="Sun.h" />
+    <ClInclude Include="SunFlower.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="UserInterface.h" />
     <ClInclude Include="Widgets.h" />
@@ -180,6 +181,8 @@
     <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteRenderer.cpp" />
+    <ClCompile Include="Sun.cpp" />
+    <ClCompile Include="SunFlower.cpp" />
     <ClCompile Include="UserInterface.cpp" />
     <ClCompile Include="Widgets.cpp" />
     <ClCompile Include="VisualInterface.cpp" />

@@ -9,6 +9,8 @@ class SpriteRenderer final: public SceneComponent,public LayerInterface,public I
 {
 	DEFINE_SUPER(SceneComponent)
 	friend class Animator;
+
+	void DealImage();
 public:
 	virtual ~SpriteRenderer() { ; }
 	virtual void Render()override;

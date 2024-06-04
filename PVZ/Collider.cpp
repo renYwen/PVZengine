@@ -72,9 +72,9 @@ void Collider::Clear()
 {
     for (auto& another : collisions) 
     {
-        another->collisions.erase(this); 
+        another->collisions.erase(this);
         if (another->mode == CollisionMode::Collision && this->mode == CollisionMode::Collision)continue;
-        OnComponentEndOverlap.BroadCast(this,another,another->pOwner); another->OnComponentEndOverlap.BroadCast(another,this,pOwner);
+        OnComponentEndOverlap.BroadCast(this,another,another->pOwner);  another->OnComponentEndOverlap.BroadCast(another,this,pOwner);
     }
     collisions.clear();
     if (point != Pair(-1, -1))for (int i = point.x; i <= point_1.x; ++i)for (int j = point.y; j <= point_1.y; ++j)mainWorld.ColliderZones[i][j].erase(this);
@@ -233,7 +233,7 @@ HitResult Collider::collisionHitCircleToBox(Collider* c1, Collider* c2)
             else{impactPoint = { pos.x,rect.bottom }; impactNormal = { 0,1 };}
         }
     }
-    return HitResult(impactPoint, impactNormal * (c1==circle?1:-1), c2->pOwner, c2);
+    return HitResult(impactPoint, impactNormal * (c1==circle?1.f:-1.f), c2->pOwner, c2);
 }
 
 HitResult Collider::collisionHitBoxToBox(Collider* c1, Collider* c2)

@@ -19,6 +19,8 @@ void ResourceManager::Initialize()
 	//植物动画资源
 	Load("peashooter", "res/animations/plants/peashooter.png", 483, 320, 24, 4, 6);
 
+	Load("sunflower", "res/animations/plants/sunflower.png", 483, 320, 24, 4, 6);
+
 
 
 	//子彈資源
@@ -27,6 +29,8 @@ void ResourceManager::Initialize()
 
 	//僵尸資源
 	Load("normalwalk", "res/animations/zombies/normal/walk.png", 1000, 695, 46, 5, 10);
+
+	Load("normaleat", "res/animations/zombies/normal/eat.png", 1000, 556, 39, 4, 10);
 
 	Load("zombiedie", "res/animations/zombies/die.png", 166, 1440, 10, 10, 1);
 }

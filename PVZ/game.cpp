@@ -2,7 +2,7 @@
 
 #include <windows.h>
 #pragma comment(lib,"winmm.lib")
-#include <future>
+//#include <future>
 
 #include"ResourceManager.h"
 #include"CollisionManager.h"
@@ -13,9 +13,9 @@
 #include"BattleController.h"
 
 
-std::future<void> m_updateFuture;
-std::future<void> m_renderFuture;
-std::future<void> m_inputFuture;
+//std::future<void> m_updateFuture;
+//std::future<void> m_renderFuture;
+//std::future<void> m_inputFuture;
 
 class Engine
 {
@@ -46,7 +46,7 @@ public:
 
 		mainWorld.currentLevel = new BattleLevel;
 		mainWorld.gameInstance = new GameInstance;
-		mainWorld.mainController = GameStatics::CreateObject<BattleController>(Vector2D(0.f, 300.f));
+		mainWorld.mainController = GameStatics::CreateObject<BattleController>();
 		mainWorld.FPSClock = new Timer;
 		//初始化游戏世界
 	}

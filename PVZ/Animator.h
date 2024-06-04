@@ -25,12 +25,12 @@ class Animation final
 
 	std::unordered_map<int, AnimationDelegate>notifications;//自定义动画通知
 
+	void Tick();
+
 public:
 	Animation() { clock.Bind(0, this, &Animation::Tick, true); clock.Stop(); }
 
 	void Load(std::string name, Vector2D delta = {0,0});
-
-	void Tick();
 
 	//设置动画帧间隔时间
 	void SetInterval(double interval) { clock.SetDelay(interval); }

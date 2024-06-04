@@ -351,6 +351,7 @@ void Image::Update()
 {
 	Widget::Update();
 	if (!sprite)return;
+
 	if (copy)spriteInfo.size = Pair(copy->getwidth(), copy->getheight());
 	else spriteInfo.size = Pair(sprite->getwidth(), sprite->getheight());
 
@@ -358,8 +359,8 @@ void Image::Update()
 	{
 		angle = GetScreenRotation();
 		RotateImage(PI * angle / 180);
+		if (filterLayers.size() > 0)FilterImage();
 	}
-	if (filterLayers.size() > 0)FilterImage();
 }
 
 void Image::Render()

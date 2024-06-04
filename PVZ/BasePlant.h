@@ -16,5 +16,5 @@ protected:
 public:
 	BasePlant();
 
-
+	void TakeDamage(float damage);
 };

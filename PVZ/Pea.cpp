@@ -2,7 +2,7 @@
 
 Pea::Pea()
 {
-	renderer->LoadSprite("pea");
+	LoadSprite("pea");
 }
 
 void Pea::Update()

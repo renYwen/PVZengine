@@ -10,6 +10,7 @@ class Camera final:public SceneComponent
 	friend class Particle;
 	friend class CircleCollider;
 	friend class BoxCollider;
+	friend class World;
 	friend void Object::DrawDebugPosition()const;
 public:
 	virtual void Update()override;
@@ -37,8 +38,6 @@ public:
 	//相机震动
 	void ShakeCamera(int intensity,int decay = 20);
 
-	void Calculate();
-
 private:
 	Transform transform_virtual;//虚拟相机位置
 
@@ -62,4 +61,6 @@ private:
 	float Lerp(float start, float end, float t);//线性插值（float）
 
 	float SmoothStep(float x);//平滑处理
+
+	void Calculate();
 };

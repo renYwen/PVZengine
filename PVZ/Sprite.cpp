@@ -18,12 +18,13 @@ void Sprite::Update()
 	Super::Update();
 	if (isBlinking)
 	{
-		if (!blinkFlag) {
+		if (!blinkFlag) 
+		{
 			if (transistionLevel > 0)transistionLevel -= transistionSpeed;
 			if (transistionLevel <= 0)isBlinking = false;
 		}
 		renderer->RemoveFilter();
-		if(isBlinking)renderer->AddFilter({ blinkFilter.color, int(transistionLevel),1 });
+		if (isBlinking)renderer->AddFilter({ blinkFilter.color, int(transistionLevel),1 });
 	}
 }
 
