@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\高级程序设计\PVZ\PVZ\Source\Project;D:\高级程序设计\PVZ\PVZ\Source\Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -118,6 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\高级程序设计\PVZ\PVZ\Source\Project;D:\高级程序设计\PVZ\PVZ\Source\Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,68 +129,70 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Animator.h" />
-    <ClInclude Include="BaseBullet.h" />
-    <ClInclude Include="BasePlant.h" />
-    <ClInclude Include="BaseZombie.h" />
-    <ClInclude Include="BattleController.h" />
-    <ClInclude Include="BattleLevel.h" />
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="Collider.h" />
-    <ClInclude Include="CollisionManager.h" />
-    <ClInclude Include="Controller.h" />
-    <ClInclude Include="CoreMinimal.h" />
-    <ClInclude Include="Delegate.h" />
-    <ClInclude Include="GameStatics.h" />
-    <ClInclude Include="InputComponent.h" />
-    <ClInclude Include="Math.h" />
-    <ClInclude Include="NormalZombie.h" />
-    <ClInclude Include="Particle.h" />
-    <ClInclude Include="Pea.h" />
-    <ClInclude Include="PeaShooter.h" />
-    <ClInclude Include="ResourceManager.h" />
-    <ClInclude Include="RigidBody.h" />
-    <ClInclude Include="Sprite.h" />
-    <ClInclude Include="SpriteRenderer.h" />
-    <ClInclude Include="Sun.h" />
-    <ClInclude Include="SunFlower.h" />
-    <ClInclude Include="Timer.h" />
-    <ClInclude Include="UserInterface.h" />
-    <ClInclude Include="Widgets.h" />
-    <ClInclude Include="VisualInterface.h" />
+    <ClInclude Include="Source\Engine\Components\Animator.h" />
+    <ClInclude Include="Source\Project\BaseBullet.h" />
+    <ClInclude Include="Source\Project\BasePlant.h" />
+    <ClInclude Include="Source\Project\BaseZombie.h" />
+    <ClInclude Include="Source\Project\BattleController.h" />
+    <ClInclude Include="Source\Project\BattleLevel.h" />
+    <ClInclude Include="Source\Engine\Components\Camera.h" />
+    <ClInclude Include="Source\Engine\Components\Collider.h" />
+    <ClInclude Include="Source\Engine\CollisionManager.h" />
+    <ClInclude Include="Source\Engine\Objects\Controller.h" />
+    <ClInclude Include="Source\Engine\CoreMinimal.h" />
+    <ClInclude Include="Source\Engine\Tools\Delegate.h" />
+    <ClInclude Include="Source\Engine\GameplayStatics.h" />
+    <ClInclude Include="Source\Engine\Components\InputComponent.h" />
+    <ClInclude Include="Source\Engine\LevelManager.h" />
+    <ClInclude Include="Source\Engine\Tools\Math.h" />
+    <ClInclude Include="Source\Project\NormalZombie.h" />
+    <ClInclude Include="Source\Engine\Components\Particle.h" />
+    <ClInclude Include="Source\Project\Pea.h" />
+    <ClInclude Include="Source\Project\PeaShooter.h" />
+    <ClInclude Include="Source\Engine\ResourceManager.h" />
+    <ClInclude Include="Source\Engine\Components\RigidBody.h" />
+    <ClInclude Include="Source\Engine\Objects\Sprite.h" />
+    <ClInclude Include="Source\Engine\Components\SpriteRenderer.h" />
+    <ClInclude Include="Source\Project\Sun.h" />
+    <ClInclude Include="Source\Project\SunFlower.h" />
+    <ClInclude Include="Source\Engine\Tools\Timer.h" />
+    <ClInclude Include="Source\Engine\UI\UserInterface.h" />
+    <ClInclude Include="Source\Engine\UI\Widgets.h" />
+    <ClInclude Include="Source\Engine\Tools\VisualInterface.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Animator.cpp" />
-    <ClCompile Include="BaseBullet.cpp" />
-    <ClCompile Include="BasePlant.cpp" />
-    <ClCompile Include="BaseZombie.cpp" />
-    <ClCompile Include="BattleController.cpp" />
-    <ClCompile Include="BattleLevel.cpp" />
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Collider.cpp" />
-    <ClCompile Include="CollisionManager.cpp" />
-    <ClCompile Include="Controller.cpp" />
-    <ClCompile Include="CoreMinimal.cpp" />
-    <ClCompile Include="game.cpp" />
-    <ClCompile Include="GameStatics.cpp" />
-    <ClCompile Include="InputComponent.cpp" />
-    <ClCompile Include="Math.cpp" />
-    <ClCompile Include="NormalZombie.cpp" />
-    <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="Pea.cpp" />
-    <ClCompile Include="PeaShooter.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
-    <ClCompile Include="RigidBody.cpp" />
-    <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="SpriteRenderer.cpp" />
-    <ClCompile Include="Sun.cpp" />
-    <ClCompile Include="SunFlower.cpp" />
-    <ClCompile Include="UserInterface.cpp" />
-    <ClCompile Include="Widgets.cpp" />
-    <ClCompile Include="VisualInterface.cpp" />
+    <ClCompile Include="Source\Engine\Components\Animator.cpp" />
+    <ClCompile Include="Source\Project\BaseBullet.cpp" />
+    <ClCompile Include="Source\Project\BasePlant.cpp" />
+    <ClCompile Include="Source\Project\BaseZombie.cpp" />
+    <ClCompile Include="Source\Project\BattleController.cpp" />
+    <ClCompile Include="Source\Project\BattleLevel.cpp" />
+    <ClCompile Include="Source\Engine\Components\Camera.cpp" />
+    <ClCompile Include="Source\Engine\Components\Collider.cpp" />
+    <ClCompile Include="Source\Engine\CollisionManager.cpp" />
+    <ClCompile Include="Source\Engine\Objects\Controller.cpp" />
+    <ClCompile Include="Source\Engine\CoreMinimal.cpp" />
+    <ClCompile Include="Source\Engine\game.cpp" />
+    <ClCompile Include="Source\Engine\GameplayStatics.cpp" />
+    <ClCompile Include="Source\Engine\Components\InputComponent.cpp" />
+    <ClCompile Include="Source\Engine\LevelManager.cpp" />
+    <ClCompile Include="Source\Engine\Tools\Math.cpp" />
+    <ClCompile Include="Source\Project\NormalZombie.cpp" />
+    <ClCompile Include="Source\Engine\Components\Particle.cpp" />
+    <ClCompile Include="Source\Project\Pea.cpp" />
+    <ClCompile Include="Source\Project\PeaShooter.cpp" />
+    <ClCompile Include="Source\Engine\ResourceManager.cpp" />
+    <ClCompile Include="Source\Engine\Components\RigidBody.cpp" />
+    <ClCompile Include="Source\Engine\Objects\Sprite.cpp" />
+    <ClCompile Include="Source\Engine\Components\SpriteRenderer.cpp" />
+    <ClCompile Include="Source\Project\Sun.cpp" />
+    <ClCompile Include="Source\Engine\UI\UserInterface.cpp" />
+    <ClCompile Include="Source\Engine\UI\Widgets.cpp" />
+    <ClCompile Include="Source\Engine\Tools\VisualInterface.cpp" />
+    <ClCompile Include="Source\Project\SunFlower.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="cpp.hint" />
+    <None Include="Source\cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

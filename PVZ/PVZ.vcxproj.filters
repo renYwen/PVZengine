@@ -25,17 +25,11 @@
     <Filter Include="Engine\Tools">
       <UniqueIdentifier>{07149afc-78c9-409b-b413-4af5a08a8246}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Interfaces">
-      <UniqueIdentifier>{278b75d3-adbb-4597-beaa-dac58696ebb5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\UI">
       <UniqueIdentifier>{30f24663-a3e5-414a-82cd-db3971665c7a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Objects">
       <UniqueIdentifier>{1cc177d2-f29f-4531-8d1d-43a7450ad079}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Manager">
-      <UniqueIdentifier>{5fc587ec-76a9-4842-9b7f-3de7503a31ff}</UniqueIdentifier>
     </Filter>
     <Filter Include="Project\头文件\Base">
       <UniqueIdentifier>{ef106415-b193-4726-8b8c-38ae9f563ecd}</UniqueIdentifier>
@@ -61,183 +55,192 @@
     <Filter Include="Project\源文件\Zombies">
       <UniqueIdentifier>{6c149188-2641-48c4-a2ff-367ddd724ff6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Core">
+      <UniqueIdentifier>{24169d63-5b19-424a-85ff-9aa55ae86ccd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CoreMinimal.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleController.h">
+    <ClInclude Include="Source\Project\BattleController.h">
       <Filter>Project\头文件</Filter>
     </ClInclude>
-    <ClInclude Include="BattleLevel.h">
+    <ClInclude Include="Source\Project\BattleLevel.h">
       <Filter>Project\头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
+    <ClInclude Include="Source\Engine\Components\Camera.h">
       <Filter>Engine\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Controller.h">
+    <ClInclude Include="Source\Engine\Objects\Controller.h">
       <Filter>Engine\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="VisualInterface.h">
-      <Filter>Engine\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteRenderer.h">
+    <ClInclude Include="Source\Engine\Components\SpriteRenderer.h">
       <Filter>Engine\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Math.h">
+    <ClInclude Include="Source\Engine\Tools\Math.h">
       <Filter>Engine\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
+    <ClInclude Include="Source\Engine\Tools\Timer.h">
       <Filter>Engine\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="GameStatics.h">
-      <Filter>Engine\Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="InputComponent.h">
+    <ClInclude Include="Source\Engine\Components\InputComponent.h">
       <Filter>Engine\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Animator.h">
+    <ClInclude Include="Source\Engine\Components\Animator.h">
       <Filter>Engine\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Collider.h">
+    <ClInclude Include="Source\Engine\Components\Collider.h">
       <Filter>Engine\Components</Filter>
     </ClInclude>
-    <ClInclude Include="RigidBody.h">
+    <ClInclude Include="Source\Engine\Components\RigidBody.h">
       <Filter>Engine\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Widgets.h">
+    <ClInclude Include="Source\Engine\UI\Widgets.h">
       <Filter>Engine\UI</Filter>
     </ClInclude>
-    <ClInclude Include="Sprite.h">
+    <ClInclude Include="Source\Engine\Objects\Sprite.h">
       <Filter>Engine\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionManager.h">
-      <Filter>Engine\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManager.h">
-      <Filter>Engine\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="Particle.h">
+    <ClInclude Include="Source\Engine\Components\Particle.h">
       <Filter>Engine\Components</Filter>
     </ClInclude>
-    <ClInclude Include="UserInterface.h">
+    <ClInclude Include="Source\Engine\UI\UserInterface.h">
       <Filter>Engine\UI</Filter>
     </ClInclude>
-    <ClInclude Include="Delegate.h">
+    <ClInclude Include="Source\Engine\Tools\Delegate.h">
       <Filter>Engine\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="BasePlant.h">
+    <ClInclude Include="Source\Project\BasePlant.h">
       <Filter>Project\头文件\Base</Filter>
     </ClInclude>
-    <ClInclude Include="BaseBullet.h">
+    <ClInclude Include="Source\Project\BaseBullet.h">
       <Filter>Project\头文件\Base</Filter>
     </ClInclude>
-    <ClInclude Include="PeaShooter.h">
+    <ClInclude Include="Source\Project\PeaShooter.h">
       <Filter>Project\头文件\Plants</Filter>
     </ClInclude>
-    <ClInclude Include="Pea.h">
+    <ClInclude Include="Source\Project\Pea.h">
       <Filter>Project\头文件\Bullets</Filter>
     </ClInclude>
-    <ClInclude Include="BaseZombie.h">
+    <ClInclude Include="Source\Project\BaseZombie.h">
       <Filter>Project\头文件\Base</Filter>
     </ClInclude>
-    <ClInclude Include="NormalZombie.h">
+    <ClInclude Include="Source\Project\NormalZombie.h">
       <Filter>Project\头文件\Zombies</Filter>
     </ClInclude>
-    <ClInclude Include="SunFlower.h">
+    <ClInclude Include="Source\Project\SunFlower.h">
       <Filter>Project\头文件\Plants</Filter>
     </ClInclude>
-    <ClInclude Include="Sun.h">
+    <ClInclude Include="Source\Project\Sun.h">
       <Filter>Project\头文件\Bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\GameplayStatics.h">
+      <Filter>Engine\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Tools\VisualInterface.h">
+      <Filter>Engine\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\CollisionManager.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\LevelManager.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\ResourceManager.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\CoreMinimal.h">
+      <Filter>Engine\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CoreMinimal.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleController.cpp">
+    <ClCompile Include="Source\Project\BattleController.cpp">
       <Filter>Project\源文件</Filter>
     </ClCompile>
-    <ClCompile Include="BattleLevel.cpp">
+    <ClCompile Include="Source\Project\BattleLevel.cpp">
       <Filter>Project\源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
+    <ClCompile Include="Source\Engine\Components\Camera.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Controller.cpp">
+    <ClCompile Include="Source\Engine\Objects\Controller.cpp">
       <Filter>Engine\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="VisualInterface.cpp">
-      <Filter>Engine\Interfaces</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteRenderer.cpp">
+    <ClCompile Include="Source\Engine\Components\SpriteRenderer.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Math.cpp">
+    <ClCompile Include="Source\Engine\Tools\Math.cpp">
       <Filter>Engine\Tools</Filter>
     </ClCompile>
-    <ClCompile Include="GameStatics.cpp">
+    <ClCompile Include="Source\Engine\GameplayStatics.cpp">
       <Filter>Engine\Tools</Filter>
     </ClCompile>
-    <ClCompile Include="InputComponent.cpp">
+    <ClCompile Include="Source\Engine\Components\InputComponent.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Animator.cpp">
+    <ClCompile Include="Source\Engine\Components\Animator.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Collider.cpp">
+    <ClCompile Include="Source\Engine\Components\Collider.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
-    <ClCompile Include="RigidBody.cpp">
+    <ClCompile Include="Source\Engine\Components\RigidBody.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Widgets.cpp">
+    <ClCompile Include="Source\Engine\UI\Widgets.cpp">
       <Filter>Engine\UI</Filter>
     </ClCompile>
-    <ClCompile Include="Sprite.cpp">
+    <ClCompile Include="Source\Engine\Objects\Sprite.cpp">
       <Filter>Engine\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionManager.cpp">
-      <Filter>Engine\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
-      <Filter>Engine\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="Particle.cpp">
+    <ClCompile Include="Source\Engine\Components\Particle.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
-    <ClCompile Include="UserInterface.cpp">
+    <ClCompile Include="Source\Engine\UI\UserInterface.cpp">
       <Filter>Engine\UI</Filter>
     </ClCompile>
-    <ClCompile Include="BasePlant.cpp">
+    <ClCompile Include="Source\Project\BasePlant.cpp">
       <Filter>Project\源文件\Base</Filter>
     </ClCompile>
-    <ClCompile Include="PeaShooter.cpp">
+    <ClCompile Include="Source\Project\PeaShooter.cpp">
       <Filter>Project\源文件\Plants</Filter>
     </ClCompile>
-    <ClCompile Include="BaseBullet.cpp">
+    <ClCompile Include="Source\Project\BaseBullet.cpp">
       <Filter>Project\源文件\Base</Filter>
     </ClCompile>
-    <ClCompile Include="Pea.cpp">
+    <ClCompile Include="Source\Project\Pea.cpp">
       <Filter>Project\源文件\Bullets</Filter>
     </ClCompile>
-    <ClCompile Include="BaseZombie.cpp">
+    <ClCompile Include="Source\Project\BaseZombie.cpp">
       <Filter>Project\源文件\Base</Filter>
     </ClCompile>
-    <ClCompile Include="NormalZombie.cpp">
+    <ClCompile Include="Source\Project\NormalZombie.cpp">
       <Filter>Project\源文件\Zombies</Filter>
     </ClCompile>
-    <ClCompile Include="Sun.cpp">
+    <ClCompile Include="Source\Project\Sun.cpp">
       <Filter>Project\源文件\Bullets</Filter>
     </ClCompile>
-    <ClCompile Include="SunFlower.cpp">
-      <Filter>Project\源文件\Plants</Filter>
+    <ClCompile Include="Source\Project\SunFlower.cpp">
+      <Filter>Project\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Tools\VisualInterface.cpp">
+      <Filter>Engine\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\CollisionManager.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\LevelManager.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\ResourceManager.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\game.cpp">
+      <Filter>Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\CoreMinimal.cpp">
+      <Filter>Engine\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="cpp.hint" />
+    <None Include="Source\cpp.hint" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,31 @@
+#pragma once
+#include <unordered_set>
+
+
+
+//碰撞类型
+enum class CollisionType:uint8_t
+{
+	Default,
+	Plant,
+	Bullet,
+	Zombie
+};
+
+
+
+//碰撞管理器
+class CollisionManager
+{
+public:
+	CollisionManager();
+
+	void Initialize();
+
+	bool FindMapping(CollisionType type1, CollisionType type2);
+
+private:
+	std::unordered_set<int>collisionMap;
+
+	void AddMapping(CollisionType type1, CollisionType type2);
+};
