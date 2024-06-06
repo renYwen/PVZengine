@@ -5,6 +5,7 @@
 #include<unordered_map>
 
 
+//文字对齐格式
 enum class CharactersPattern:uint8
 {
 	Left,
@@ -12,6 +13,8 @@ enum class CharactersPattern:uint8
 	Right
 };
 
+
+/* 文字 */
 class Characters
 {
 	int row = 1;
@@ -30,6 +33,12 @@ public:
 	void PrintCharacters(Vector2D pos, CharactersPattern pattern = CharactersPattern::Middle);
 };
 
+
+
+
+
+
+//部件布局模式
 enum class LayoutPattern :uint8
 {
 	LeftTop,
@@ -43,6 +52,7 @@ enum class LayoutPattern :uint8
 	RightBottom
 };
 
+//部件可视性
 enum class UIPattern :uint8
 {
 	None,
@@ -51,9 +61,8 @@ enum class UIPattern :uint8
 };
 
 
-
-//基础小部件
-class Widget: public Base, public LayerInterface
+/* 基础小部件 */
+class Widget: public Object, public LayerInterface
 {
 	friend class Panel;
 	Pair point{ -1, -1 }, point_1{ -1, -1 };
@@ -112,7 +121,9 @@ public:
 
 
 
-//容器面板（容纳小部件或UserInterface；当容纳UserInterface时,本质是容纳画布根部件）
+
+
+/* 容器面板（容纳小部件或UserInterface；当容纳UserInterface时,本质是容纳画布根部件） */
 class Panel : public Widget
 {
 	void SetSize(Vector2D size) { this->size = size; }//不允许手动设置Panel的大小
@@ -140,6 +151,7 @@ private:
 	void AdjustMemberSizeToUnit(Widget* member);
 };
 
+/* 水平面板 */
 class HorizontalPanel final: public Panel
 {
 	float spacing = 0;
@@ -149,6 +161,7 @@ public:
 	Vector2D GetSize() const override;
 };
 
+/* 垂直面板 */
 class VerticalPanel final: public Panel
 {
 	float spacing = 0;
@@ -158,6 +171,7 @@ public:
 	Vector2D GetSize() const override;
 };
 
+/* 网格面板 */
 class GridPanel final: public Panel
 {
 	int32 row = 1;
@@ -178,7 +192,7 @@ public:
 
 
 
-//文本部件
+/* 文本部件 */
 class Text :public Widget
 {
 protected:
@@ -203,7 +217,7 @@ public:
 
 
 
-//图像部件
+/* 图像部件 */
 class Image: public Widget, public ImageInterface
 {
 public:
@@ -220,7 +234,7 @@ public:
 //按钮委托
 DECLARE_NO_PARAM_MULTICAST_DELEGATE_CLASS(ButtonDelegate)
 
-//按钮部件
+/* 按钮部件 */
 class Button :public Image
 {
 	IMAGE* normal;
@@ -261,7 +275,7 @@ enum class BarDirection :uint8
 	BottomToTop
 };
 
-//滑动条部件
+/* 滑动条部件 */
 class Bar : public Widget
 {
 	float percentage = 0;

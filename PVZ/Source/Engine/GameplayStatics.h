@@ -1,6 +1,6 @@
 #pragma once
 #include"CoreMinimal.h"
-
+#include"Core/World.h"
 
 
 class GameplayStatics final
@@ -40,9 +40,9 @@ template<typename T>
 inline T* GameplayStatics::CreateObject(Vector2D pos)
 {
 	T* pObj = new T;
-	if (pObj && static_cast<Object*>(pObj)) 
+	if (pObj && static_cast<Actor*>(pObj)) 
 	{
-		mainWorld.GameObjects_to_add.push_back(pObj);
+		mainWorld.GameActors_to_add.push_back(pObj);
 		if(pos != Vector2D())pObj->SetLocalPosition(pos);
 		return pObj;
 	}
@@ -54,8 +54,8 @@ template<typename T>
 inline std::vector<T*> GameplayStatics::FindObjectsOfClass()
 {
 	std::vector<T*> result;
-	result.reserve(mainWorld.GameObjects.size());
-	for (auto& obj : mainWorld.GameObjects) 
+	result.reserve(mainWorld.GameActors.size());
+	for (auto& obj : mainWorld.GameActors) 
 	{
 		if (T* pObj = dynamic_cast<T*>(obj))result.push_back(pObj);
 	}
@@ -65,7 +65,7 @@ inline std::vector<T*> GameplayStatics::FindObjectsOfClass()
 template<typename T>
 inline T* GameplayStatics::FindObjectOfName(std::string tagName)
 {
-	for (auto& obj : mainWorld.GameObjects)
+	for (auto& obj : mainWorld.GameActors)
 	{
 		if (obj->GetName() == tagName)return obj;
 	}

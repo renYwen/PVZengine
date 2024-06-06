@@ -24,7 +24,7 @@ protected:
 	AnimationDelegate dieEvent;
 	Animation die;
 
-	std::unordered_set<Object*>overlapPlants;
+	std::unordered_set<Actor*>overlapPlants;
 	class BasePlant* eatingPlant = nullptr;
 public:
 	BaseZombie();
@@ -33,6 +33,6 @@ public:
 
 	void GetDamage(float damage);
 
-	virtual void OnOverlap(Collider* overlapComp, Collider* otherComp, Object* otherActor);
-	virtual void EndOverlap(Collider* overlapComp, Collider* otherComp, Object* otherActor);
+	virtual void OnOverlap(Collider* overlapComp, Collider* otherComp, Actor* otherActor);
+	virtual void EndOverlap(Collider* overlapComp, Collider* otherComp, Actor* otherActor);
 };

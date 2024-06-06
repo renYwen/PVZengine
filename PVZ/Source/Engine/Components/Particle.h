@@ -1,8 +1,9 @@
 #pragma once
-#include"CoreMinimal.h"
+#include"SceneComponent.h"
 #include"Tools/VisualInterface.h"
 #include<chrono>
 #include<queue>
+
 
 using std::chrono::duration;
 using std::chrono::steady_clock;
@@ -28,7 +29,7 @@ struct ParticleInfo
 
 
 
-//粒子组件
+/* 粒子组件 */
 class Particle final : public SceneComponent, public LayerInterface, public ImageInterface
 {
 	std::deque<ParticleInfo>particles;

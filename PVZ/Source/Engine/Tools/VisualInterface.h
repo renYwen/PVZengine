@@ -1,7 +1,7 @@
 #pragma once
-#include"CoreMinimal.h"
+#include"Core/Struct.h"
 #include<easyx.h>
-#include<string>
+#include<set>
 
 
 

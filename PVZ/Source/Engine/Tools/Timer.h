@@ -1,11 +1,15 @@
 #pragma once
+#include"Core/World.h"
 #include<functional>
 #include<chrono>
+
 
 using std::chrono::duration;
 using std::chrono::steady_clock;
 using std::chrono::time_point;
 using std::chrono::milliseconds;
+
+
 
 //计时器
 class Timer final
@@ -28,15 +32,7 @@ public:
 	}
 
 	//绑定计时器，默认情况下只执行一次，如果多次执行，可以指定首次执行时间间隔
-	void Bind(double delay, std::function<void()>function, bool repeat = false, double firstDelay = -1.0)
-	{
-		callback = function;
-		this->delay = duration<double>(delay); 
-		lastTime = steady_clock::now();
-		if (firstDelay>=0)lastTime -= milliseconds(int(1000 * (delay - firstDelay)));
-		bPersistent = repeat;
-		mainWorld.GameTimers.insert(this);
-	}
+	void Bind(double delay, std::function<void()>function, bool repeat = false, double firstDelay = -1.0);
 
 	//获取距离上一次执行的时间
 	double GetDelay() { return getDelay().count(); }
@@ -68,14 +64,6 @@ private:
 		return steady_clock::now() - lastTime;
 	}
 
-	void Execute()
-	{
-		if (bRunning && delay.count() > 0 && getDelay().count() >= delay.count())
-		{
-			callback();
-			if (bPersistent)lastTime = steady_clock::now();
-			else delay = duration<double>(0);
-		}
-	}
+	void Execute();
 };
 

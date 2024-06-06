@@ -1,12 +1,15 @@
 #pragma once
 #include"Components/SpriteRenderer.h"
 #include"Tools/Timer.h"
+#include"Actor.h"
+
+
 
 
 //精灵类（即支持2D渲染的游戏对象）
-class Sprite :public Object
+class Sprite :public Actor
 {
-	DEFINE_SUPER(Object)
+	DEFINE_SUPER(Actor)
 
 	SpriteRenderer* renderer;
 

@@ -1,12 +1,11 @@
 #pragma once
-#include"CoreMinimal.h"
-#include<unordered_map>
-#include<string>
+#include <unordered_map>
+#include <string>
 
 
+class Level;
 
-
-//地图管理器
+/* 地图管理器 */
 class LevelManager
 {
 public:
@@ -16,7 +15,7 @@ public:
 
 	void RefreshLevel();
 private:
-	std::unordered_map<std::string, class Level*>levelMap;
+	std::unordered_map<std::string, Level*>levelMap;
 
 	template<class T>
 	void AddLevel(std::string levelName);

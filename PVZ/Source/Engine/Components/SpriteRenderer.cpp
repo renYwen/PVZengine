@@ -1,5 +1,6 @@
 #include "SpriteRenderer.h"
 #include "Camera.h"
+#include "Core/World.h"
 #pragma comment(lib,"Msimg32.lib")
 
 

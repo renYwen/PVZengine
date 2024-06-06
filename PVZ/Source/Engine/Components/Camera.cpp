@@ -1,4 +1,5 @@
 #include "Camera.h"
+#include "Core/World.h"
 #include "Tools/Math.h"
 #include "easyx.h"
 
@@ -32,6 +33,11 @@ void Camera::BeginPlay()
 	transform_virtual.rotation = GetWorldRotation();
 	springArmLength_virtual = springArmLength;
 	//初始化虚拟参数
+}
+
+void Camera::SetMainCamera()
+{
+	mainWorld.mainCamera = this;
 }
 
 void Camera::SetSmoothness(int smooth)

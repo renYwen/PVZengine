@@ -3,7 +3,7 @@
 #include <functional>
 
 
-//单播委托
+/* 单播委托 */
 template<typename R = void,typename... Args>
 class UnicastDelegate
 {
@@ -27,7 +27,7 @@ public:
 };
 
 
-//多播委托
+/* 多播委托 */
 template<typename... Args>
 class MulticastDelegate
 {
@@ -73,7 +73,6 @@ public:
 
 #define DECLARE_MULTI_PARAM_MULTICAST_DELEGATE_CLASS(Name, ...) class Name : public MulticastDelegate<__VA_ARGS__> {};
 #define DECLARE_NO_PARAM_MULTICAST_DELEGATE_CLASS(Name) class Name : public MulticastDelegate<> {};
-
 
 
 

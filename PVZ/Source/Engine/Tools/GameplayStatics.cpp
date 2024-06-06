@@ -2,6 +2,7 @@
 #include "Objects/Controller.h"
 #include "LevelManager.h"
 
+
 GameInstance* GameplayStatics::GetGameInstance()
 {
     if(!mainWorld.gameInstance)mainWorld.gameInstance = new GameInstance;

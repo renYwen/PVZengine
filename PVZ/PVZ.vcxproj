@@ -129,7 +129,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Engine\Components\ActorComponent.h" />
     <ClInclude Include="Source\Engine\Components\Animator.h" />
+    <ClInclude Include="Source\Engine\Components\SceneComponent.h" />
+    <ClInclude Include="Source\Engine\Objects\Actor.h" />
+    <ClInclude Include="Source\Engine\Core\Object.h" />
+    <ClInclude Include="Source\Engine\Core\Struct.h" />
+    <ClInclude Include="Source\Engine\Core\Macro.h" />
+    <ClInclude Include="Source\Engine\Core\World.h" />
     <ClInclude Include="Source\Project\BaseBullet.h" />
     <ClInclude Include="Source\Project\BasePlant.h" />
     <ClInclude Include="Source\Project\BaseZombie.h" />
@@ -137,19 +144,19 @@
     <ClInclude Include="Source\Project\BattleLevel.h" />
     <ClInclude Include="Source\Engine\Components\Camera.h" />
     <ClInclude Include="Source\Engine\Components\Collider.h" />
-    <ClInclude Include="Source\Engine\CollisionManager.h" />
+    <ClInclude Include="Source\Engine\Tools\CollisionManager.h" />
     <ClInclude Include="Source\Engine\Objects\Controller.h" />
     <ClInclude Include="Source\Engine\CoreMinimal.h" />
     <ClInclude Include="Source\Engine\Tools\Delegate.h" />
     <ClInclude Include="Source\Engine\GameplayStatics.h" />
     <ClInclude Include="Source\Engine\Components\InputComponent.h" />
-    <ClInclude Include="Source\Engine\LevelManager.h" />
+    <ClInclude Include="Source\Engine\Tools\LevelManager.h" />
     <ClInclude Include="Source\Engine\Tools\Math.h" />
     <ClInclude Include="Source\Project\NormalZombie.h" />
     <ClInclude Include="Source\Engine\Components\Particle.h" />
     <ClInclude Include="Source\Project\Pea.h" />
     <ClInclude Include="Source\Project\PeaShooter.h" />
-    <ClInclude Include="Source\Engine\ResourceManager.h" />
+    <ClInclude Include="Source\Engine\Tools\ResourceManager.h" />
     <ClInclude Include="Source\Engine\Components\RigidBody.h" />
     <ClInclude Include="Source\Engine\Objects\Sprite.h" />
     <ClInclude Include="Source\Engine\Components\SpriteRenderer.h" />
@@ -161,7 +168,12 @@
     <ClInclude Include="Source\Engine\Tools\VisualInterface.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Engine\Components\ActorComponent.cpp" />
     <ClCompile Include="Source\Engine\Components\Animator.cpp" />
+    <ClCompile Include="Source\Engine\Components\SceneComponent.cpp" />
+    <ClCompile Include="Source\Engine\Objects\Actor.cpp" />
+    <ClCompile Include="Source\Engine\Tools\Timer.cpp" />
+    <ClCompile Include="Source\Engine\Core\World.cpp" />
     <ClCompile Include="Source\Project\BaseBullet.cpp" />
     <ClCompile Include="Source\Project\BasePlant.cpp" />
     <ClCompile Include="Source\Project\BaseZombie.cpp" />
@@ -169,19 +181,18 @@
     <ClCompile Include="Source\Project\BattleLevel.cpp" />
     <ClCompile Include="Source\Engine\Components\Camera.cpp" />
     <ClCompile Include="Source\Engine\Components\Collider.cpp" />
-    <ClCompile Include="Source\Engine\CollisionManager.cpp" />
+    <ClCompile Include="Source\Engine\Tools\CollisionManager.cpp" />
     <ClCompile Include="Source\Engine\Objects\Controller.cpp" />
-    <ClCompile Include="Source\Engine\CoreMinimal.cpp" />
-    <ClCompile Include="Source\Engine\game.cpp" />
-    <ClCompile Include="Source\Engine\GameplayStatics.cpp" />
+    <ClCompile Include="Source\Engine\Core\game.cpp" />
+    <ClCompile Include="Source\Engine\Tools\GameplayStatics.cpp" />
     <ClCompile Include="Source\Engine\Components\InputComponent.cpp" />
-    <ClCompile Include="Source\Engine\LevelManager.cpp" />
+    <ClCompile Include="Source\Engine\Tools\LevelManager.cpp" />
     <ClCompile Include="Source\Engine\Tools\Math.cpp" />
     <ClCompile Include="Source\Project\NormalZombie.cpp" />
     <ClCompile Include="Source\Engine\Components\Particle.cpp" />
     <ClCompile Include="Source\Project\Pea.cpp" />
     <ClCompile Include="Source\Project\PeaShooter.cpp" />
-    <ClCompile Include="Source\Engine\ResourceManager.cpp" />
+    <ClCompile Include="Source\Engine\Tools\ResourceManager.cpp" />
     <ClCompile Include="Source\Engine\Components\RigidBody.cpp" />
     <ClCompile Include="Source\Engine\Objects\Sprite.cpp" />
     <ClCompile Include="Source\Engine\Components\SpriteRenderer.cpp" />

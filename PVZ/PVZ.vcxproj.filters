@@ -22,9 +22,6 @@
     <Filter Include="Engine\Components">
       <UniqueIdentifier>{eee4ed2f-1397-4804-acec-57c5f16532a8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Tools">
-      <UniqueIdentifier>{07149afc-78c9-409b-b413-4af5a08a8246}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\UI">
       <UniqueIdentifier>{30f24663-a3e5-414a-82cd-db3971665c7a}</UniqueIdentifier>
     </Filter>
@@ -57,6 +54,9 @@
     </Filter>
     <Filter Include="Engine\Core">
       <UniqueIdentifier>{24169d63-5b19-424a-85ff-9aa55ae86ccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Tools">
+      <UniqueIdentifier>{07149afc-78c9-409b-b413-4af5a08a8246}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -138,17 +138,38 @@
     <ClInclude Include="Source\Engine\Tools\VisualInterface.h">
       <Filter>Engine\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Engine\CollisionManager.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Engine\LevelManager.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Engine\ResourceManager.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Engine\CoreMinimal.h">
       <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Objects\Actor.h">
+      <Filter>Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Components\ActorComponent.h">
+      <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Components\SceneComponent.h">
+      <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Core\Macro.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Core\Object.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Core\Struct.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Core\World.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Tools\ResourceManager.h">
+      <Filter>Engine\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Tools\LevelManager.h">
+      <Filter>Engine\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Tools\CollisionManager.h">
+      <Filter>Engine\Tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -170,7 +191,7 @@
     <ClCompile Include="Source\Engine\Tools\Math.cpp">
       <Filter>Engine\Tools</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Engine\GameplayStatics.cpp">
+    <ClCompile Include="Source\Engine\Tools\GameplayStatics.cpp">
       <Filter>Engine\Tools</Filter>
     </ClCompile>
     <ClCompile Include="Source\Engine\Components\InputComponent.cpp">
@@ -218,26 +239,38 @@
     <ClCompile Include="Source\Project\Sun.cpp">
       <Filter>Project\源文件\Bullets</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Project\SunFlower.cpp">
-      <Filter>Project\源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Engine\Tools\VisualInterface.cpp">
       <Filter>Engine\Tools</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Engine\CollisionManager.cpp">
+    <ClCompile Include="Source\Engine\Tools\CollisionManager.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Engine\LevelManager.cpp">
+    <ClCompile Include="Source\Engine\Tools\LevelManager.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Engine\ResourceManager.cpp">
+    <ClCompile Include="Source\Engine\Tools\ResourceManager.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Engine\game.cpp">
+    <ClCompile Include="Source\Engine\Core\game.cpp">
       <Filter>Engine\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Engine\CoreMinimal.cpp">
+    <ClCompile Include="Source\Engine\Objects\Actor.cpp">
+      <Filter>Engine\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Components\ActorComponent.cpp">
+      <Filter>Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Components\SceneComponent.cpp">
+      <Filter>Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Tools\Timer.cpp">
+      <Filter>Engine\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Core\World.cpp">
       <Filter>Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Project\SunFlower.cpp">
+      <Filter>Project\源文件\Plants</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,8 +1,9 @@
 #pragma once
 #include <unordered_map>
-#include <easyx.h>
 #include <string>
 
+
+class IMAGE;
 
 struct AnimationResource
 {
@@ -11,7 +12,7 @@ struct AnimationResource
 };
 
 
-//资源管理器
+/* 资源管理器 */
 class ResourceManager
 {
 public:

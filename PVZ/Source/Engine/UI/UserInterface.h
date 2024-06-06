@@ -2,10 +2,12 @@
 #include"Widgets.h"
 
 
-//UI¿‡
-class UserInterface : public Base
+
+
+/* UI¿‡ */
+class UserInterface : public Object
 {
-	friend class Panel;
+	friend Panel;
 	std::unordered_set<Widget*>widgets;
 protected:
 	Widget* const rootCanvas = new Widget;
@@ -17,7 +19,7 @@ public:
 
 	virtual void BeginPlay() { ; }
 
-	void ShowInfoBoxs() { for (auto& widget : widgets) { widget->ShowInfoBox(); } }
+	void ShowInfoBoxs();
 
 	template<class T>
 	T* AddWidget()

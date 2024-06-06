@@ -2,8 +2,8 @@
 #include "Camera.h"
 #include "RigidBody.h"
 #include "Objects/Controller.h"
-#include "GameplayStatics.h"
 #include "Tools/Math.h"
+#include "GameplayStatics.h"
 #include "easyx.h"
 
 
@@ -53,7 +53,7 @@ void Collider::Update()
 }
 
 
-const std::vector<Object*>& Collider::GetCollisions(CollisionType type)
+const std::vector<Actor*>& Collider::GetCollisions(CollisionType type)
 {
     aims.clear();
     if (!collisions.empty()) {

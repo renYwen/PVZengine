@@ -1,5 +1,5 @@
 #pragma once
-#include "CoreMinimal.h"
+#include "ActorComponent.h"
 #include <unordered_map>
 #include <functional>
 
@@ -53,7 +53,7 @@ struct KeyBindInfo
 };
 
 //输入交互组件
-class InputComponent final: public Component
+class InputComponent final: public ActorComponent
 {
 public:
 	void SetMapping(std::string mappingName, KeyCode value);

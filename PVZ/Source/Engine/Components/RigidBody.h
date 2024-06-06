@@ -1,20 +1,29 @@
 #pragma once
-#include"CoreMinimal.h"
+#include"Components/ActorComponent.h"
 
 
 
-//刚体组件
-class RigidBody final:public Component
+/* 刚体组件 */
+class RigidBody final:public ActorComponent
 {
 	friend class Collider;
 public:
 	virtual ~RigidBody();
 	virtual void Update() override;
 
+	//设置重力
 	void SetGraivty(float gravity) { this->gravity = gravity; }
+	
+	//设置速度
 	void SetVelocity(Vector2D velocity) { this->velocity = velocity; }
+	
+	//设置速度最大值
 	void SetMaxSpeed(float maxSpeed) { this->maxSpeed = maxSpeed; }
+	
+	//设置角速度
 	void SetAngularVelocity(float angularVelocity) { this->angularVelocity = angularVelocity; }
+	
+	//设置质量
 	void SetMass(float mass) { this->mass = mass; }
 	
 	//添加力

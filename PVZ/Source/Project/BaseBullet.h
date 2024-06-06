@@ -14,5 +14,5 @@ public:
 	BaseBullet();
 	virtual void BeginPlay();
 
-	virtual void OnOverlap(Collider* overlapComp, Collider* otherComp, Object* otherActor);
+	virtual void OnOverlap(Collider* overlapComp, Collider* otherComp, Actor* otherActor);
 };

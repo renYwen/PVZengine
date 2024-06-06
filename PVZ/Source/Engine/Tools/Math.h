@@ -2,6 +2,8 @@
 #include <random>
 
 
+
+/* 数学工具 */
 class Math
 {
 	static std::random_device rd;

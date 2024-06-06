@@ -1,9 +1,9 @@
 #pragma once
-#include"CoreMinimal.h"
+#include "SceneComponent.h"
+#include "Objects/Actor.h"
 
 
-
-//摄像机组件
+/* 摄像机组件 */
 class Camera final:public SceneComponent
 {
 	friend class SpriteRenderer;
@@ -11,17 +11,14 @@ class Camera final:public SceneComponent
 	friend class CircleCollider;
 	friend class BoxCollider;
 	friend class World;
-	friend void Object::DrawDebugPosition()const;
+	friend void Actor::DrawDebugPosition()const;
 public:
 	virtual void Update()override;
 
 	virtual void BeginPlay()override;
 
 	//设置主摄像机
-	void SetMainCamera()
-	{
- 	    mainWorld.mainCamera = this;
-	}
+	void SetMainCamera();
 
 	//设置相机移动平滑度
 	void SetSmoothness(int smooth);

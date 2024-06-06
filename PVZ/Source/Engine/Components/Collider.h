@@ -1,7 +1,8 @@
 #pragma once
-#include"CoreMinimal.h"
+#include"SceneComponent.h"
 #include"Tools/Delegate.h"
-#include"CollisionManager.h"
+#include"Tools/CollisionManager.h"
+#include"Core/World.h"
 
 
 /* 碰撞体形状 */
@@ -11,7 +12,9 @@ enum class ColliderShape:uint8 { Circle, Box };
 enum class CollisionMode:uint8 { None, Trigger, Collision };
 
 
-
+class RigidBody;
+class Controller;
+class Collider;
 
 
 //碰撞结果
@@ -19,11 +22,11 @@ struct HitResult
 {
 	Vector2D ImpactPoint;
 	Vector2D ImpactNormal;
-	Object* HitObject;
-	Component* HitComponent;
+	Actor* HitObject;
+	ActorComponent* HitComponent;
 
 	HitResult() :ImpactPoint(0, 0), ImpactNormal(0, 0), HitObject(nullptr), HitComponent(nullptr) {}
-	HitResult(const Vector2D& impactPoint, const Vector2D& impactNormal, Object* hitObject, Component* hitComponent)
+	HitResult(const Vector2D& impactPoint, const Vector2D& impactNormal, Actor* hitObject, ActorComponent* hitComponent)
 		:ImpactPoint(impactPoint), ImpactNormal(impactNormal), HitObject(hitObject), HitComponent(hitComponent) {}
 };
 
@@ -32,11 +35,11 @@ struct HitResult
 
 //碰撞委托
 
-/* Collider* overlapComp, Collider* otherComp, Object* otherActor */
-DECLARE_MULTI_PARAM_MULTICAST_DELEGATE_CLASS(CollisionOverlapDelegate, Collider*,Collider*, Object*)
+/* Collider* overlapComp, Collider* otherComp, Actor* otherActor */
+DECLARE_MULTI_PARAM_MULTICAST_DELEGATE_CLASS(CollisionOverlapDelegate, Collider*,Collider*, Actor*)
 
-/* Collider* hitComp, Collider* otherComp, Object* otherActor, Vector2D normalImpulse, const HitResult& hitResult */
-DECLARE_MULTI_PARAM_MULTICAST_DELEGATE_CLASS(CollisionHitDelegate, Collider* ,Collider*, Object*, Vector2D, const HitResult&)
+/* Collider* hitComp, Collider* otherComp, Actor* otherActor, Vector2D normalImpulse, const HitResult& hitResult */
+DECLARE_MULTI_PARAM_MULTICAST_DELEGATE_CLASS(CollisionHitDelegate, Collider* ,Collider*, Actor*, Vector2D, const HitResult&)
 
 
 
@@ -46,8 +49,8 @@ DECLARE_MULTI_PARAM_MULTICAST_DELEGATE_CLASS(CollisionHitDelegate, Collider* ,Co
 //碰撞器
 class Collider :public SceneComponent
 {
-	friend class Controller;
-	friend class RigidBody;
+	friend Controller;
+	friend RigidBody;
 	friend void World::ProcessColliders();
 public:
 	Collider():type(CollisionType::Default) { mainWorld.GameColliders.insert(this); }
@@ -58,7 +61,7 @@ public:
 
 
 	/* 获取正在和该碰撞体发生碰撞的某一指定碰撞类型的所有碰撞体指针，以数组形式返回 */
-	const std::vector<Object*>& GetCollisions(CollisionType type);
+	const std::vector<Actor*>& GetCollisions(CollisionType type);
 
 	int GetLayer()const { return layer; }
 	void SetLayer(int layer) { this->layer = layer; }
@@ -90,7 +93,7 @@ private:
 
 	Pair point{ -1, -1 }, point_1{ -1, -1 };
 	std::unordered_set<Collider*>collisions;
-	std::vector<Object*>aims;
+	std::vector<Actor*>aims;
 	std::vector<Collider*>collisions_to_erase;
 
   
@@ -116,7 +119,7 @@ private:
 	static HitResult collisionHitBoxToBox(Collider* c1, Collider* c2);
 
 
-	class RigidBody* rigidAttached = nullptr;//附着的刚体
+	RigidBody* rigidAttached = nullptr;//附着的刚体
 };
 
 

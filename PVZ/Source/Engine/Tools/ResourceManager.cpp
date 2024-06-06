@@ -1,4 +1,5 @@
 #include "ResourceManager.h"
+#include <easyx.h>
 
 
 void ResourceManager::Initialize()

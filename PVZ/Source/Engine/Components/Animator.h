@@ -1,17 +1,18 @@
 #pragma once
-#include"CoreMinimal.h"
+#include"ActorComponent.h"
 #include"Tools/Timer.h"
 #include"Tools/Delegate.h"
-#include"easyx.h"
 #include<unordered_map>
 
 
 
-//动画委托
+/* 动画委托 */
 DECLARE_NO_PARAM_UNICAST_DELEGATE_CLASS(AnimationDelegate)
 
 
-//动画源
+class IMAGE;
+
+/* 动画源 */
 class Animation final
 {
     friend class Animator;
@@ -43,14 +44,16 @@ public:
 };
 
 
-//动画播放器
-class Animator final: public Component
+class SpriteRenderer;
+
+/* 动画播放器 */
+class Animator final: public ActorComponent
 {
 	std::unordered_map<std::string, Animation&> animations;
 
 	Animation* aniNode = nullptr;//当前播放的动画
 
-	class SpriteRenderer* rendererAttached = nullptr;//附着的渲染器
+	SpriteRenderer* rendererAttached = nullptr;//附着的渲染器
 
 public:
 	virtual void BeginPlay() override;

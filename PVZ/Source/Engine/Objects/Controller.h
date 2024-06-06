@@ -1,11 +1,14 @@
 #pragma once
 #include"Components/InputComponent.h"
+#include"Actor.h"
+
+
 
 
 //Íæ¼Ò¿ØÖÆÆ÷Àà
-class Controller :public Object
+class Controller :public Actor
 {
-	DEFINE_SUPER(Object)
+	DEFINE_SUPER(Actor)
 
 	InputComponent* inputComponent;
 	class Camera* camera;

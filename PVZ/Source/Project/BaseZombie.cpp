@@ -50,7 +50,7 @@ void BaseZombie::GetDamage(float damage)
 }
 
 
-void BaseZombie::OnOverlap(Collider* overlapComp, Collider* otherComp, Object* otherActor)
+void BaseZombie::OnOverlap(Collider* overlapComp, Collider* otherComp, Actor* otherActor)
 {
 	if (otherComp->GetType() != CollisionType::Plant)return;
 
@@ -65,7 +65,7 @@ void BaseZombie::OnOverlap(Collider* overlapComp, Collider* otherComp, Object* o
 
 }
 
-void BaseZombie::EndOverlap(Collider* overlapComp, Collider* otherComp, Object* otherActor)
+void BaseZombie::EndOverlap(Collider* overlapComp, Collider* otherComp, Actor* otherActor)
 {
 	if (otherComp->GetType() != CollisionType::Plant)return;
 

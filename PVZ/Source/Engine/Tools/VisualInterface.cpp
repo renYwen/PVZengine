@@ -1,7 +1,7 @@
 #include "VisualInterface.h"
 #include "ResourceManager.h"
 #include "Math.h"
-
+#include "Core/World.h"
 
 
 LayerInterface::LayerInterface()

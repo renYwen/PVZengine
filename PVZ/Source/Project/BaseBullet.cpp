@@ -19,7 +19,7 @@ void BaseBullet::BeginPlay()
 	circle->OnComponentBeginOverlap.AddDynamic(this,&BaseBullet::OnOverlap);
 }
 
-void BaseBullet::OnOverlap(Collider* overlapComp, Collider* otherComp, Object* otherActor)
+void BaseBullet::OnOverlap(Collider* overlapComp, Collider* otherComp, Actor* otherActor)
 {
 	BaseZombie* ABaseZombie = Cast<BaseZombie>(otherActor);
 	if (!ABaseZombie)return;

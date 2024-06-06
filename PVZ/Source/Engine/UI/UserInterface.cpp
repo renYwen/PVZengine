@@ -1,4 +1,6 @@
 #include "UserInterface.h"
+#include "Core/World.h"
+
 
 
 void UserInterface::Update()
@@ -7,6 +9,11 @@ void UserInterface::Update()
 	{
 		if (widget->GetUIPattern() != UIPattern::None)widget->Update();
 	}
+}
+
+void UserInterface::ShowInfoBoxs()
+{
+	for (auto& widget : widgets) { widget->ShowInfoBox(); }
 }
 
 void UserInterface::AddToViewport()
