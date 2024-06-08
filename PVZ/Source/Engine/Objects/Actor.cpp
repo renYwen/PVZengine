@@ -34,6 +34,14 @@ void Actor::BeginPlay()
 	}
 }
 
+void Actor::EndPlay()
+{
+	for (auto& it : components)
+	{
+		it->EndPlay();
+	}
+}
+
 void Actor::SetRootComponent(SceneComponent* newRoot)
 {
 	const_cast<SceneComponent*&>(root) = newRoot;
@@ -64,7 +72,8 @@ void Actor::RegisterComponent(ActorComponent* pCom)
 
 void Actor::UnregisterComponent(ActorComponent* pCom)
 {
-	components_iter = components.erase(components.find(pCom));
+	if (components.find(pCom) != components.end())
+		components_iter = components.erase(components.find(pCom));
 }
 
 
@@ -74,6 +83,7 @@ void Actor::Destroy()
 
 	std::stack<Actor*>objects_to_delete;
 	objects_to_delete.push(this);
+	this->EndPlay();
 
 	while (!objects_to_delete.empty()) {
 		Actor* current_object = objects_to_delete.top();
@@ -87,6 +97,7 @@ void Actor::Destroy()
 			}
 		}
 		mainWorld.GameActors_to_delete.insert(current_object);
+		current_object->EndPlay();
 	}
 }
 

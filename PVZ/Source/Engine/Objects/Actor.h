@@ -22,11 +22,13 @@ protected:
 public:
 	Actor();
 
-	virtual ~Actor();
+	virtual ~Actor() = 0;
 
 	virtual void Update()override;
 
 	virtual void BeginPlay()override;
+
+	virtual void EndPlay()override;
 
 	//设置场景根组件
 	void SetRootComponent(SceneComponent* newRoot);

@@ -1,5 +1,5 @@
 #include "InputComponent.h"
-#include <windows.h>
+#include <easyx.h>
 
 
 
@@ -9,11 +9,21 @@ void InputComponent::SetMapping(std::string mappingName, KeyCode value)
 }
 
 
+void InputComponent::BindAction(std::string actionName, InputType type, std::function<void()> func)
+{
+	if (mappings.find(actionName) != mappings.end())
+		callbacks.insert({ actionName, { func,type,false } });
+}
+
 void InputComponent::Update()
 {
-	POINT point;
-	GetCursorPos(&point);
-	mousePos = Vector2D(float(point.x),float(point.y));
+	if (!bIsEnabled||!bActive)return;
+
+	ExMessage msg;
+	if (peekmessage(&msg))
+	{
+		mousePos = Vector2D(float(msg.x),float(msg.y));
+	}
 
 	for (auto& mapping : mappings)
 	{
@@ -27,8 +37,8 @@ void InputComponent::Update()
 		}
 		else if (info.isPressed)
 		{
-			if(info.type == InputType::Pressed)info.isPressed = false;
-			else if (info.type == InputType::Released) {info.func(); info.isPressed = false;}
+		    if (info.type == InputType::Released)info.func();
+			info.isPressed = false;
 		}
 	}
 
@@ -37,12 +47,18 @@ void InputComponent::Update()
 
 Vector2D InputComponent::GetMousePosition()
 {
-	return mousePos;
+	return bActive ? mousePos : Vector2D{};
 }
 
 bool InputComponent::IsMouseButtonPressed()
 {
-	return GetAsyncKeyState(VK_LBUTTON) & 0x8000;
+	return bActive ? (GetAsyncKeyState(VK_LBUTTON) & 0x8000) : false;
+}
+
+void InputComponent::EnableInput(bool enable)
+{
+	bActive = enable;
 }
 
 Vector2D InputComponent::mousePos = {};
+bool InputComponent::bActive = false;

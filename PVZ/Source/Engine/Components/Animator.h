@@ -36,7 +36,7 @@ public:
 	//设置动画帧间隔时间
 	void SetInterval(double interval) { clock.SetDelay(interval); }
 
-	//设置下标
+	//设置动画帧下标
 	void SetIndex(int i) { index = i; }
 
 	//在指定帧处添加动画通知
@@ -49,23 +49,34 @@ class SpriteRenderer;
 /* 动画播放器 */
 class Animator final: public ActorComponent
 {
+	DEFINE_SUPER(ActorComponent)
+
+    friend SpriteRenderer;
+public:
+	virtual ~Animator();
+	virtual void BeginPlay() override;
+	virtual void Update() override;
+
+	virtual void Activate()override;
+	virtual void Deactivate()override;
+
+	//插入动画节点
+	void Insert(std::string name, Animation& ani);
+
+	//获取当前动画节点
+	Animation* GetNode()const;
+
+	//设置动画节点
+	void SetNode(std::string nodeName);
+
+	//设置附着渲染器
+	void SetupAttachment(SpriteRenderer*renderer);
+private:
 	std::unordered_map<std::string, Animation&> animations;
 
 	Animation* aniNode = nullptr;//当前播放的动画
 
 	SpriteRenderer* rendererAttached = nullptr;//附着的渲染器
 
-public:
-	virtual void BeginPlay() override;
-	virtual void Update() override;
-
-	void Insert(std::string name, Animation& ani);
-
-	Animation* GetNode()const {return aniNode;}
-
-	//设置动画节点
-	void SetNode(std::string nodeName);
-
-	//设置动画是否播放
-	void SetCalled(bool called);
+	IMAGE* currentSprite = nullptr;//当前播放的图像
 };

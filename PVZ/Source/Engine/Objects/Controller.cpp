@@ -5,6 +5,7 @@
 #include "Core/World.h"
 
 
+
 Controller::Controller()
 {
 	camera = ConstructComponent<Camera>();
@@ -20,9 +21,24 @@ void Controller::BeginPlay()
 	SetupInputComponent(inputComponent);
 }
 
+void Controller::PeekInfo()
+{
+	inputComponent->Update();
+}
+
+Vector2D Controller::GetCursorPosition() const
+{
+	return InputComponent::GetMousePosition() + mainWorld.mainCamera->GetWorldPosition() - Vector2D(WIN_WIDTH,WIN_HEIGHT);
+}
+
+bool Controller::IsMouseClicked() const
+{
+	return InputComponent::IsMouseButtonPressed();
+}
+
 HitResult Controller::GetHitResultUnderCursor()
 {
-	Vector2D pos = inputComponent->GetMousePosition();
+	Vector2D pos = GetCursorPosition();
 	int x = Math::Clamp(int(pos.x) / 100, 0, 7);
 	int y = Math::Clamp(int(pos.y) / 100, 0, 5);
 
@@ -34,6 +50,11 @@ HitResult Controller::GetHitResultUnderCursor()
 		}
 	}
 	return HitResult();
+}
+
+void Controller::EnableInput(bool enable)
+{
+	InputComponent::EnableInput(enable);
 }
 
 

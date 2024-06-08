@@ -22,13 +22,11 @@ float Camera::SmoothStep(float x)
 	return pow(x, float(smoothness) / 100);
 }
 
-void Camera::Update()
-{
-	SceneComponent::Update();
-}
 
 void Camera::BeginPlay()
 {
+	SceneComponent::BeginPlay();
+
 	transform_virtual.position = GetWorldPosition();
 	transform_virtual.rotation = GetWorldRotation();
 	springArmLength_virtual = springArmLength;
@@ -72,15 +70,17 @@ void Camera::ShakeCamera(int intensity,int decay)
 
 void Camera::Calculate()
 {
-	if (smoothness) {
+	if (!bIsEnabled)return;
+
+	if (smoothness)
+	{
 		transform_virtual.position = Lerp(transform_virtual.position, GetWorldPosition(),
-			0.1f/smoothness * SmoothStep(Vector2D::Distance(transform_virtual.position, GetWorldPosition())/distanceThreshold));
+			0.1f / smoothness * SmoothStep(Vector2D::Distance(transform_virtual.position, GetWorldPosition()) / distanceThreshold));
 	}
 	else transform_virtual.position = GetWorldPosition();
 	//平滑位移
 
-	if (smoothnessForSpringArm)
-		springArmLength_virtual = Lerp(springArmLength_virtual, springArmLength, 0.1f/smoothnessForSpringArm);
+	if (smoothnessForSpringArm)springArmLength_virtual = Lerp(springArmLength_virtual, springArmLength, 0.1f/smoothnessForSpringArm);
 	else springArmLength_virtual = springArmLength;
 	//平滑视野缩放
 
@@ -97,10 +97,12 @@ void Camera::Calculate()
 		}
 
 
-		if (Vector2D::Distance(GetLocalPosition(), shakeCenter) < shakeIntensity) {
+		if (Vector2D::Distance(GetLocalPosition(), shakeCenter) < shakeIntensity)
+		{
 			AddPosition(shakeSpeed); transform_virtual.position += shakeSpeed;
 		}
-		else {
+		else 
+		{
 			shakeSpeed = -shakeSpeed; AddPosition(shakeSpeed); transform_virtual.position += shakeSpeed;
 		}
 	}

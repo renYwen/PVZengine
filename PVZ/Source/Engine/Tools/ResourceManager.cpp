@@ -34,6 +34,19 @@ void ResourceManager::Initialize()
 	Load("normaleat", "Asset/animations/zombies/normal/eat.png", 1000, 556, 39, 4, 10);
 
 	Load("zombiedie", "Asset/animations/zombies/die.png", 166, 1440, 10, 10, 1);
+
+
+	//ˆDÏñÙYÔ´
+	Load("seedbank", "Asset/images/seedbank.png", 530, 91);
+
+	Load("card1", "Asset/images/cards/card1.png", 54, 77);
+	Load("card2", "Asset/images/cards/card2.png", 54, 77);
+	Load("card3", "Asset/images/cards/card3.png", 54, 77);
+	Load("card4", "Asset/images/cards/card4.png", 54, 77);
+	Load("card5", "Asset/images/cards/card5.png", 54, 77);
+	Load("card6", "Asset/images/cards/card6.png", 54, 77);
+	Load("card7", "Asset/images/cards/card7.png", 54, 77);
+	Load("card8", "Asset/images/cards/card8.png", 54, 77);
 }
 
 

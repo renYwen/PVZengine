@@ -1,6 +1,7 @@
 #include "GameplayStatics.h"
 #include "Objects/Controller.h"
 #include "LevelManager.h"
+#include "Components/Camera.h"
 
 
 GameInstance* GameplayStatics::GetGameInstance()
@@ -19,4 +20,9 @@ Controller* GameplayStatics::GetController()
 void GameplayStatics::OpenLevel(std::string levelName)
 {
     mainWorld.levelManager->SetDefaultLevel(levelName);
+}
+
+void GameplayStatics::PlayCameraShake(int intensity, int decay)
+{
+    mainWorld.mainCamera->ShakeCamera(intensity,decay);
 }

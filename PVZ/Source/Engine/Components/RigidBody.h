@@ -52,5 +52,6 @@ private:
 	float mass = 1.0f;
 
 	std::unordered_set<Collider*> colliders;
+
 	void RestrictVelocity(Vector2D impactNormal,RigidBody* another = nullptr);
 };

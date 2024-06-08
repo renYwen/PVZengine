@@ -89,16 +89,16 @@ Vector2D Widget::GetLayoutOffset() const
 {
 	switch (layoutPattern)
 	{
-		case LayoutPattern::LeftTop:return Vector2D(0, 0);
-		case LayoutPattern::MiddleTop:return Vector2D(parent->GetSize().x / 2, 0);
-		case LayoutPattern::RightTop:return Vector2D(parent->GetSize().x, 0);
-		case LayoutPattern::LeftMiddle:return Vector2D(0, parent->GetSize().y / 2);
-		case LayoutPattern::Center:return Vector2D(parent->GetSize().x / 2, parent->GetSize().y / 2);
-		case LayoutPattern::RightMiddle:return Vector2D(parent->GetSize().x, parent->GetSize().y / 2);
-		case LayoutPattern::LeftBottom:return Vector2D(0, parent->GetSize().y);
-		case LayoutPattern::MiddleBottom:return Vector2D(parent->GetSize().x / 2, parent->GetSize().y);
-		case LayoutPattern::RightBottom:return Vector2D(parent->GetSize().x, parent->GetSize().y);
-		default:return Vector2D(0, 0);
+	case LayoutPattern::LeftTop:return Vector2D(-parent->GetSize().x / 2, -parent->GetSize().y / 2);
+	case LayoutPattern::MiddleTop:return Vector2D(0, -parent->GetSize().y / 2);
+	case LayoutPattern::RightTop:return Vector2D(parent->GetSize().x / 2, -parent->GetSize().y / 2);
+	case LayoutPattern::LeftMiddle:return Vector2D(-parent->GetSize().x / 2, 0);
+	case LayoutPattern::Center:return Vector2D(0, 0);
+	case LayoutPattern::RightMiddle:return Vector2D(parent->GetSize().x / 2, 0);
+	case LayoutPattern::LeftBottom:return Vector2D(-parent->GetSize().x / 2, parent->GetSize().y / 2);
+	case LayoutPattern::MiddleBottom:return Vector2D(0, parent->GetSize().y / 2);
+	case LayoutPattern::RightBottom:return Vector2D(parent->GetSize().x / 2, parent->GetSize().y / 2);
+	default:return Vector2D(0, 0);
 	}
 	return Vector2D(0, 0);
 }
@@ -254,11 +254,11 @@ void Panel::SetUnitSize(Vector2D size)
 void Panel::AddMember(Widget* member, int32 index)
 {
 	member->AttachTo(this);
-	if (index)members.emplace(members.begin() + index, member);
+	if (index >= 0)members.emplace(members.begin() + index, member);
 	else members.push_back(member);
 	member->attachedPanel = this;
 	AdjustMemberSizeToUnit(member);
-	if(index)AdjustMemberPosition(member,index);
+	AdjustMemberPosition(member, index >= 0 ? index : members.size() - 1);
 }
 void Panel::RemoveMember(Widget* member)
 {
@@ -270,12 +270,12 @@ void Panel::AddMember(UserInterface* member, int32 index)
 {
 	member->rootCanvas->AttachTo(this);
 	index = Math::Clamp(index,-1,int32(members.size()));
-	if(index)members.emplace(members.begin()+index, member->rootCanvas);
+	if (index >= 0)members.emplace(members.begin()+index, member->rootCanvas);
 	else members.push_back(member->rootCanvas);
 	members_ui.push_back(member);
 	member->rootCanvas->attachedPanel = this;
 	AdjustMemberSizeToUnit(member->rootCanvas);
-	if (index)AdjustMemberPosition(member->rootCanvas, index);
+	AdjustMemberPosition(member->rootCanvas, index >= 0 ? index : members.size() - 1);
 }
 void Panel::RemoveMember(UserInterface* member)
 {
@@ -292,8 +292,8 @@ void Panel::AdjustMemberSizeToUnit(Widget* member)
 
 void HorizontalPanel::AdjustMemberPosition(Widget* member, int32 index)
 {
-	if(!index)return;
-	Vector2D pos = Vector2D(index * (unitSize.x + spacing), 0);
+	if(index<0)return;
+	Vector2D pos = Vector2D(index * (unitSize.x + spacing), 0) + Vector2D(unitSize.x, unitSize.y)*0.5f;
 	member->SetRelativePosition(pos);
 }
 
@@ -304,7 +304,7 @@ Vector2D HorizontalPanel::GetSize() const
 
 void VerticalPanel::AdjustMemberPosition(Widget* member, int32 index)
 {
-	if (!index)return;
+	if (index<0)return;
 	Vector2D pos = Vector2D(0, index * (unitSize.y + spacing));
 	member->SetRelativePosition(pos);
 }
@@ -316,7 +316,7 @@ Vector2D VerticalPanel::GetSize() const
 
 void GridPanel::AdjustMemberPosition(Widget* member, int32 index)
 {
-	if (!index)return;
+	if (index<0)return;
 	Vector2D pos = Vector2D((index % column) * (unitSize.x + spacingX), (index / column) * (unitSize.y + spacingY));
 	member->SetRelativePosition(pos);
 }
@@ -417,19 +417,22 @@ void Button::Update()
 
 void Button::LoadNormalPicture(std::string path)
 {
-	normal = mainWorld.resourcePool->Fetch(name);
+	normal = mainWorld.resourcePool->Fetch(path);
+	if (!normal)return;
 	spriteInfo.endLoc = { normal->getwidth(), normal->getheight() };
 }
 
 void Button::LoadHoverPicture(std::string path)
 {
-	hover = mainWorld.resourcePool->Fetch(name);
+	hover = mainWorld.resourcePool->Fetch(path);
+	if (!hover)return;
 	spriteInfo.endLoc = { hover->getwidth(), hover->getheight() };
 }
 
 void Button::LoadClickPicture(std::string path)
 {
-	pressed = mainWorld.resourcePool->Fetch(name);
+	pressed = mainWorld.resourcePool->Fetch(path);
+	if (!pressed)return;
 	spriteInfo.endLoc = { pressed->getwidth(), pressed->getheight() };
 }
 
@@ -492,18 +495,18 @@ void Bar::Render()
 
 void Bar::LoadBarFrontPicture(std::string path)
 {
-	barFront = mainWorld.resourcePool->Fetch(name);
+	barFront = mainWorld.resourcePool->Fetch(path);
 	SetFrontSize(Pair(barFront->getwidth(), barFront->getheight()));
 }
 
 void Bar::LoadBarBackPicture(std::string path)
 {
-	barBack = mainWorld.resourcePool->Fetch(name);
+	barBack = mainWorld.resourcePool->Fetch(path);
 	SetBackSize(Pair(barBack->getwidth(), barBack->getheight()));
 }
 
 void Bar::LoadBarButtonPicture(std::string path)
 {
-	barButton = mainWorld.resourcePool->Fetch(name);
+	barButton = mainWorld.resourcePool->Fetch(path);
 	SetButtonSize(Pair(barButton->getwidth(), barButton->getheight()));
 }

@@ -60,6 +60,7 @@ class Particle final : public SceneComponent, public LayerInterface, public Imag
 	void Produce(); //ВњЩњСЃзг
 public:
 	Particle() {lastTime = steady_clock::now();}
+
 	void Load(std::string name);
 
 	virtual void Update()override;

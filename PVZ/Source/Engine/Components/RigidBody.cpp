@@ -14,7 +14,7 @@ RigidBody::~RigidBody()
 
 void RigidBody::Update()
 {
-	if (!pOwner)return;
+	if (!pOwner||!bIsEnabled)return;
 
 	if (bMoveable) 
 	{
@@ -40,8 +40,10 @@ void RigidBody::Update()
 		}
 		pOwner->AddPosition(Vector2D(Math::Clamp(velocity.x, -maxSpeed, maxSpeed), Math::Clamp(velocity.y, -maxSpeed, maxSpeed)) * DELTA_TIME);
 	}
-	
-	if (bRotatable)pOwner->AddRotation(angularVelocity * DELTA_TIME);
+	if (bRotatable)
+	{
+		pOwner->AddRotation(angularVelocity * DELTA_TIME);
+	}
 }
 
 void RigidBody::RestrictVelocity(Vector2D impactNormal, RigidBody* another)

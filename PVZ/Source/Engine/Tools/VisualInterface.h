@@ -4,7 +4,7 @@
 #include<set>
 
 
-
+/* 图层接口 */
 class LayerInterface
 {
 	int layer = 0;
@@ -18,20 +18,23 @@ public:
 };
 
 
+//渲染补充信息
 struct SpriteInfo
 {
 	Vector2D offset = Vector2D(0, 0);
 	Pair size = Pair(0, 0);
 	Pair startLoc = Pair(0, 0);
 	Pair endLoc = Pair(0, 0);
-};//渲染补充信息
+};
 
+
+//滤镜信息
 struct FilterInfo 
 {
 	COLORREF color = BLACK;//滤镜颜色
 	int level = 50;//颜色过渡层级（1~100）
 	int layer = 0;//滤镜层级（0和1）
-};//滤镜信息
+};
 
 
 //滤镜图层排序规则
@@ -44,6 +47,7 @@ struct FilterSort
 };
 
 
+/* 图像接口 */
 class ImageInterface
 {
 protected:

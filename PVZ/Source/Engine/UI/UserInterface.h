@@ -9,15 +9,16 @@ class UserInterface : public Object
 {
 	friend Panel;
 	std::unordered_set<Widget*>widgets;
+
+	void BeginPlay()override {}
+
 protected:
 	Widget* const rootCanvas = new Widget;
 public:
-	UserInterface() { rootCanvas->SetSize({ WIN_WIDTH,WIN_HEIGHT }); }
+	UserInterface();
 	~UserInterface() { for (auto& widget : widgets)delete widget; }
 
 	virtual void Update();
-
-	virtual void BeginPlay() { ; }
 
 	void ShowInfoBoxs();
 

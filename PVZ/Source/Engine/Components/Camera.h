@@ -12,9 +12,8 @@ class Camera final:public SceneComponent
 	friend class BoxCollider;
 	friend class World;
 	friend void Actor::DrawDebugPosition()const;
-public:
-	virtual void Update()override;
 
+public:
 	virtual void BeginPlay()override;
 
 	//ÉèÖÃÖ÷ÉãÏñ»ú

@@ -171,6 +171,12 @@
     <ClInclude Include="Source\Engine\Tools\CollisionManager.h">
       <Filter>Engine\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Project\BattleUI.h">
+      <Filter>Project\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Project\SeedUI.h">
+      <Filter>Project\头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Project\BattleController.cpp">
@@ -271,6 +277,12 @@
     </ClCompile>
     <ClCompile Include="Source\Project\SunFlower.cpp">
       <Filter>Project\源文件\Plants</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Project\BattleUI.cpp">
+      <Filter>Project\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Project\SeedUI.cpp">
+      <Filter>Project\源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

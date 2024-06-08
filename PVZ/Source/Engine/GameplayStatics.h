@@ -30,6 +30,9 @@ public:
 
 	//加载地图
 	static void OpenLevel(std::string levelName);
+
+	//相机震动
+	static void PlayCameraShake(int intensity, int decay = 20);
 };
 
 

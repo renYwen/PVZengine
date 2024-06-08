@@ -1,5 +1,6 @@
 #include "SpriteRenderer.h"
 #include "Camera.h"
+#include "Animator.h"
 #include "Core/World.h"
 #pragma comment(lib,"Msimg32.lib")
 
@@ -14,9 +15,14 @@ void SpriteRenderer::DealImage()
 	if (filterLayers.size() > 0)FilterImage();
 }
 
+SpriteRenderer::~SpriteRenderer()
+{
+	if (animatorAttached)animatorAttached->rendererAttached = nullptr;
+}
+
 void SpriteRenderer::Render()
 {
-	if (!sprite)return;
+	if (!sprite || !bIsEnabled)return;
 
 	Vector2D pos = (GetWorldPosition() - mainWorld.mainCamera->transform_virtual.position + spriteInfo.offset) 
 		* 20.f / mainWorld.mainCamera->springArmLength_virtual + Vector2D(WIN_WIDTH / 2, WIN_HEIGHT / 2);
@@ -39,7 +45,7 @@ void SpriteRenderer::Render()
 void SpriteRenderer::Update()
 {
 	SceneComponent::Update();
-	if (!sprite)return;
+	if (!sprite || !bIsEnabled)return;
 
 	if (copy)spriteInfo.size = Pair(copy->getwidth(), copy->getheight());
 	else spriteInfo.size = Pair(sprite->getwidth(), sprite->getheight());
@@ -51,6 +57,8 @@ void SpriteRenderer::Update()
 		if (filterLayers.size() > 0)FilterImage();
 	}
 }
+
+
 
 
 

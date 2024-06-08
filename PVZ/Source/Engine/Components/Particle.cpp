@@ -42,6 +42,7 @@ void Particle::Load(std::string name)
 void Particle::Update()
 {
 	SceneComponent::Update();
+	if (!bIsEnabled)return;
 
 	if (particles.size() < capacity)
 	{
@@ -89,26 +90,24 @@ void Particle::Update()
 
 void Particle::Render()
 {
-	if (images) 
+	if (!bIsEnabled||!images)return;
+
+	Vector2D center = (GetWorldPosition() - mainWorld.mainCamera->transform_virtual.position);
+	HDC dstDC = GetImageHDC();
+
+	int w = images[0]->getwidth();
+	int h = images[0]->getheight();
+	float dw = float(w * GetWorldScale().x * 20.f / mainWorld.mainCamera->springArmLength_virtual);
+	float dh = float(h * GetWorldScale().y * 20.f / mainWorld.mainCamera->springArmLength_virtual);
+
+	for (auto& each : particles)
 	{
-		Vector2D center = (GetWorldPosition() - mainWorld.mainCamera->transform_virtual.position);
-		HDC dstDC = GetImageHDC();
-
-		
-		int w = images[0]->getwidth();
-		int h = images[0]->getheight();
-		float dw = float(w * GetWorldScale().x * 20.f / mainWorld.mainCamera->springArmLength_virtual);
-		float dh = float(h * GetWorldScale().y * 20.f / mainWorld.mainCamera->springArmLength_virtual);
-
-		for (auto& each : particles) 
-		{
-			BLENDFUNCTION bf = { AC_SRC_OVER,0,(BYTE)(each.alpha>0?each.alpha:0),AC_SRC_ALPHA };
-			Vector2D pos = center + each.offset;
-			pos = pos * 20.f / mainWorld.mainCamera->springArmLength_virtual
-				+ Vector2D(WIN_WIDTH / 2, WIN_HEIGHT / 2) - Vector2D(dw / 2, dh / 2);
-			HDC srcDC = GetImageHDC(images[each.index]);
-			AlphaBlend(dstDC, (int)pos.x, (int)pos.y, (int)dw,(int)dh, srcDC, 0, 0, w, h, bf);
-		}
+		BLENDFUNCTION bf = { AC_SRC_OVER,0,(BYTE)(each.alpha > 0 ? each.alpha : 0),AC_SRC_ALPHA };
+		Vector2D pos = center + each.offset;
+		pos = pos * 20.f / mainWorld.mainCamera->springArmLength_virtual
+			+ Vector2D(WIN_WIDTH / 2, WIN_HEIGHT / 2) - Vector2D(dw / 2, dh / 2);
+		HDC srcDC = GetImageHDC(images[each.index]);
+		AlphaBlend(dstDC, (int)pos.x, (int)pos.y, (int)dw, (int)dh, srcDC, 0, 0, w, h, bf);
 	}
 }
 

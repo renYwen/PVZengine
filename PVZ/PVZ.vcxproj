@@ -129,6 +129,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Project\SeedUI.h" />
+    <ClInclude Include="Source\Project\BattleUI.h" />
     <ClInclude Include="Source\Engine\Components\ActorComponent.h" />
     <ClInclude Include="Source\Engine\Components\Animator.h" />
     <ClInclude Include="Source\Engine\Components\SceneComponent.h" />
@@ -188,6 +190,7 @@
     <ClCompile Include="Source\Engine\Components\InputComponent.cpp" />
     <ClCompile Include="Source\Engine\Tools\LevelManager.cpp" />
     <ClCompile Include="Source\Engine\Tools\Math.cpp" />
+    <ClCompile Include="Source\Project\BattleUI.cpp" />
     <ClCompile Include="Source\Project\NormalZombie.cpp" />
     <ClCompile Include="Source\Engine\Components\Particle.cpp" />
     <ClCompile Include="Source\Project\Pea.cpp" />
@@ -196,6 +199,7 @@
     <ClCompile Include="Source\Engine\Components\RigidBody.cpp" />
     <ClCompile Include="Source\Engine\Objects\Sprite.cpp" />
     <ClCompile Include="Source\Engine\Components\SpriteRenderer.cpp" />
+    <ClCompile Include="Source\Project\SeedUI.cpp" />
     <ClCompile Include="Source\Project\Sun.cpp" />
     <ClCompile Include="Source\Engine\UI\UserInterface.cpp" />
     <ClCompile Include="Source\Engine\UI\Widgets.cpp" />

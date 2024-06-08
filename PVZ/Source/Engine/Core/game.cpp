@@ -81,7 +81,7 @@ void CALLBACK timecallback_(UINT, UINT, DWORD_PTR, DWORD_PTR, DWORD_PTR)
 }
 
 
-void main()
+int main()
 {
 	Engine::Init();
 	
@@ -89,6 +89,7 @@ void main()
 	timeSetEvent(1, 0, timecallback_,0, TIME_CALLBACK_FUNCTION | TIME_PERIODIC);
 	
 	Sleep(INFINITE);
+	return 0;
 }
 
 

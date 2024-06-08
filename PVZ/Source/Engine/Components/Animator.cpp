@@ -18,16 +18,25 @@ void Animation::Load(std::string name, Vector2D delta)
 	offset = delta;
 }
 
+
+
+Animator::~Animator()
+{
+	if (rendererAttached)rendererAttached->animatorAttached = nullptr;
+}
+
 void Animator::BeginPlay()
 {
+	if (rendererAttached)return;
+
 	rendererAttached = pOwner->GetComponentByClass<SpriteRenderer>();
+	if(rendererAttached)rendererAttached->animatorAttached = this;
 }
 
 void Animator::Update()
 {
-	if (!rendererAttached||!aniNode)return;
+	if (!bIsEnabled||!rendererAttached||!aniNode)return;
 
-	static IMAGE* currentSprite = nullptr;
 	IMAGE* sprite = aniNode->images[aniNode->index];
 	if (currentSprite != sprite)
 	{
@@ -45,6 +54,11 @@ void Animator::Insert(std::string name, Animation& ani)
 	if(ani.images)animations.insert({ name,ani });
 }
 
+Animation* Animator::GetNode() const
+{
+	return aniNode;
+}
+
 void Animator::SetNode(std::string nodeName)
 {
 	if (aniNode)aniNode->clock.Stop();
@@ -52,7 +66,22 @@ void Animator::SetNode(std::string nodeName)
 	aniNode->clock.Continue();
 }
 
-void Animator::SetCalled(bool called)
+void Animator::SetupAttachment(SpriteRenderer* renderer)
 {
-	if(aniNode)called?aniNode->clock.Continue():aniNode->clock.Stop();
+	rendererAttached = renderer;
+	renderer->animatorAttached = this;
 }
+
+void Animator::Activate()
+{
+	Super::Activate();
+	if (aniNode)aniNode->clock.Continue();
+}
+
+void Animator::Deactivate()
+{
+	Super::Deactivate();
+	if (aniNode)aniNode->clock.Stop();
+}
+
+

@@ -18,8 +18,9 @@ public:
 	std::string GetName()const { return name; }
 	//ÉèÖÃ±êÇ©Ãû
 	void SetName(const std::string& name) { this->name = name; }
-	virtual void Update() = 0;
-	virtual void BeginPlay() = 0;
+	virtual void Update() {}
+	virtual void BeginPlay() {}
+	virtual void EndPlay() {}
 };
 
 

@@ -3,6 +3,8 @@
 #include"Actor.h"
 
 
+class Camera;
+struct HitResult;
 
 
 //玩家控制器类
@@ -11,20 +13,26 @@ class Controller :public Actor
 	DEFINE_SUPER(Actor)
 
 	InputComponent* inputComponent;
-	class Camera* camera;
+	Camera* camera;
 
 protected:
-	virtual void SetupInputComponent(InputComponent* inputComponent) { ; }
+	virtual void SetupInputComponent(InputComponent* inputComponent) {}
 public:
 	Controller();
 
 	virtual void BeginPlay() override;
 
-	void PeekInfo() { inputComponent->Update(); }
+	void PeekInfo();
 
-	Vector2D GetCursorPosition() const { return InputComponent::GetMousePosition(); }
+	//获取鼠标世界坐标系位置
+	Vector2D GetCursorPosition() const;
 
-	bool IsMouseClicked() const { return InputComponent::IsMouseButtonPressed(); }
+	//获取鼠标是否按下
+	bool IsMouseClicked() const;
 
-	struct HitResult GetHitResultUnderCursor();//该物体必须拥有碰撞体
+	//获取世界坐标系下鼠标所处位置的物体信息（该物体必须拥有碰撞体）
+	HitResult GetHitResultUnderCursor();
+
+	//激活输入输出
+	void EnableInput(bool enable);
 };

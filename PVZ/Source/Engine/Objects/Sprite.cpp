@@ -2,10 +2,6 @@
 #include "Tools/Math.h"
 
 
-void Sprite::Recover()
-{
-	blinkFlag = false;
-}
 
 Sprite::Sprite()
 {
@@ -35,13 +31,14 @@ void Sprite::LoadSprite(std::string name)
 
 void Sprite::Blink(float duration, COLORREF color, int level)
 {
-	if (!isBlinking) {
+	if (!isBlinking) 
+	{
 		duration = Math::Clamp(duration, 0.1f, 1.f);
 		blinkFlag = true;isBlinking = true;
 		blinkFilter = { color, level,1 };
 		transistionLevel = float(level);
 		transistionSpeed = 2 * level * DELTA_TIME /duration;
-		recoverTimerHandle.Bind(duration/2, this, &Sprite::Recover);
+		recoverTimerHandle.Bind(duration / 2, [this]() {blinkFlag = false; });
 	}
 }
 

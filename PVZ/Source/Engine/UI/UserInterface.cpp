@@ -3,6 +3,12 @@
 
 
 
+UserInterface::UserInterface()
+{
+	rootCanvas->SetSize({ WIN_WIDTH,WIN_HEIGHT }); 
+	rootCanvas->SetRelativePosition({ WIN_WIDTH * 0.5,WIN_HEIGHT * 0.5 });
+}
+
 void UserInterface::Update()
 {
 	for (auto& widget : widgets)

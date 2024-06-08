@@ -8,16 +8,24 @@ class Actor;
 /* 组件基类 */
 class ActorComponent : public Object
 {
-protected:
-	Actor* pOwner = nullptr;//处理控制逻辑
 public:
-	virtual void Update() {}
+	//获取绑定游戏对象
+	Actor* GetOwner();
 
-	virtual void BeginPlay() {}
-
-	//设置绑定对象
+	//设置绑定游戏对象
 	void SetOwner(Actor* owner);
 
 	//销毁组件
 	virtual void Destruct();
+
+	//激活组件
+	virtual void Activate();
+	
+	//停用组件
+	virtual void Deactivate();
+
+protected:
+	Actor* pOwner = nullptr;//处理控制逻辑
+
+	bool bIsEnabled = true;//是否激活
 };

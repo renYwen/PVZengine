@@ -46,38 +46,45 @@ DECLARE_MULTI_PARAM_MULTICAST_DELEGATE_CLASS(CollisionHitDelegate, Collider* ,Co
 
 
 
-//碰撞器
+/* 碰撞器 */
 class Collider :public SceneComponent
 {
+	DEFINE_SUPER(SceneComponent)
+
 	friend Controller;
 	friend RigidBody;
 	friend void World::ProcessColliders();
+
 public:
 	Collider():type(CollisionType::Default) { mainWorld.GameColliders.insert(this); }
 	virtual ~Collider();
 
 	virtual void BeginPlay() override;
 	virtual void Update() override;
+	virtual void Deactivate()override;
 
-
-	/* 获取正在和该碰撞体发生碰撞的某一指定碰撞类型的所有碰撞体指针，以数组形式返回 */
+	//获取正在和该碰撞体发生碰撞的某一指定碰撞类型的所有碰撞体指针，以数组形式返回
 	const std::vector<Actor*>& GetCollisions(CollisionType type);
 
+	//碰撞层级
 	int GetLayer()const { return layer; }
 	void SetLayer(int layer) { this->layer = layer; }
 
+	//碰撞类型
 	CollisionType GetType()const { return type; }
 	void SetType(CollisionType type) { this->type = type; }
 
+	//碰撞体形状
 	ColliderShape GetShape()const { return shape; }
 
+	//碰撞模式
 	void SetCollisonMode(CollisionMode mode);
 	CollisionMode GetCollisonMode()const { return mode; }
 
-	/* 绘制调试线 */
+	//绘制调试线
 	virtual void DrawDebugLine() = 0;
 
-	/* 碰撞事件 */
+	//碰撞事件
 	CollisionOverlapDelegate OnComponentBeginOverlap;
 	CollisionOverlapDelegate OnComponentEndOverlap;
 	CollisionHitDelegate OnComponentHit;
@@ -104,7 +111,7 @@ private:
 
 	bool CollisionJudge(Collider* another);
 
-	/* 碰撞判断 */
+	//碰撞判断
 	static bool (*collisionJudgeMap[3])(Collider*, Collider*);
 	static bool collisionJudgeCircleToCircle(Collider* c1, Collider* c2);
 	static bool collisionJudgeCircleToBox(Collider* c1, Collider* c2);
@@ -112,7 +119,7 @@ private:
 	
 	HitResult CollisionHit(Collider* another);
 
-	/* 碰撞信息 */
+	//碰撞信息
 	static HitResult (*collisionHitMap[3])(Collider*, Collider*);
 	static HitResult collisionHitCircleToCircle(Collider* c1, Collider* c2);
 	static HitResult collisionHitCircleToBox(Collider* c1, Collider* c2);
@@ -124,7 +131,7 @@ private:
 
 
 
-//圆形碰撞器
+/* 圆形碰撞器 */
 class CircleCollider final:public Collider
 {
 public:
@@ -141,7 +148,7 @@ private:
 
 
 
-//矩形碰撞器
+/* 矩形碰撞器 */
 class BoxCollider final:public Collider
 {
 public:
@@ -159,7 +166,7 @@ public:
 	
 	Rect GetRect()const { return rect; }
 
-	//需传入已经确定发生碰撞的两个碰撞器
+	//获取重叠矩形宽高，需传入已经确定发生碰撞的两个碰撞器
 	static Vector2D GetOverlapRect(const Rect& r1, const Rect& r2);
 private:
 	Vector2D size = Vector2D(0, 0);

@@ -18,25 +18,26 @@ HitResult (*Collider::collisionHitMap[3])(Collider*, Collider*) =
 Collider::~Collider()
 {
     if (rigidAttached)rigidAttached->colliders.erase(this);
-    mainWorld.GameColliders.erase(this); Clear();
+    mainWorld.GameColliders.erase(this);Clear();
 }
 
 void Collider::BeginPlay()
 {
+    Super::BeginPlay();
+
     rigidAttached = pOwner->GetComponentByClass<RigidBody>();
     if(rigidAttached)rigidAttached->colliders.insert(this);
 }
 
 void Collider::Update()
 {
-    SceneComponent::Update();
+    Super::Update();
 
-    if (mode == CollisionMode::None)return;
+    if (mode == CollisionMode::None||!bIsEnabled)return;
     Vector2D half;
     if (shape == ColliderShape::Circle)
     {
-        float a = Cast<CircleCollider>(this)->GetRadius();
-        half = { a,a };
+        float a = Cast<CircleCollider>(this)->GetRadius();half = { a,a };
     }
     else half = Cast<BoxCollider>(this)->GetSize() / 2;
 
@@ -52,20 +53,32 @@ void Collider::Update()
     //碰撞区块信息更新
 }
 
+void Collider::Deactivate()
+{
+    Super::Deactivate();
+    mainWorld.GameColliders_to_clear.insert(this);
+}
+
 
 const std::vector<Actor*>& Collider::GetCollisions(CollisionType type)
 {
     aims.clear();
-    if (!collisions.empty()) {
-        for (auto it = collisions.begin(); it != collisions.end(); ++it)
-            if ((*it)->type == type)aims.push_back((*it)->pOwner);
+    for (auto& it : collisions)
+    {
+        if (it->type == type)
+        {
+            aims.push_back(it->pOwner);
+        }
     }
     return aims;
 }
 
 void Collider::SetCollisonMode(CollisionMode mode)
 {
-    if(mode == CollisionMode::None)mainWorld.GameColliders_to_clear.insert(this);
+    if (mode == CollisionMode::None)
+    {
+        mainWorld.GameColliders_to_clear.insert(this);
+    }
     this->mode = mode;
 }
 
@@ -78,15 +91,18 @@ void Collider::Clear()
         OnComponentEndOverlap.BroadCast(this,another,another->pOwner);  another->OnComponentEndOverlap.BroadCast(another,this,pOwner);
     }
     collisions.clear();
-    if (point != Pair(-1, -1))for (int i = point.x; i <= point_1.x; ++i)for (int j = point.y; j <= point_1.y; ++j)mainWorld.ColliderZones[i][j].erase(this);
+    if (point != Pair(-1, -1))
+    {
+        for (int i = point.x; i <= point_1.x; ++i)for (int j = point.y; j <= point_1.y; ++j)mainWorld.ColliderZones[i][j].erase(this);
+    }
     point = { -1, -1 }, point_1 = { -1, -1 };
 }
 
 void Collider::Insert(Collider* another)
 {
     if (mainWorld.collisionManager->FindMapping(this->type, another->type)
-        && collisions.find(another) == collisions.end()
-        && CollisionJudge(another)) {
+        && collisions.find(another) == collisions.end() && CollisionJudge(another)) 
+    {
         collisions.insert(another); another->collisions.insert(this);
         if (another->mode == CollisionMode::Collision && this->mode == CollisionMode::Collision)
         {

@@ -67,7 +67,7 @@ class Widget: public Object, public LayerInterface
 	friend class Panel;
 	Pair point{ -1, -1 }, point_1{ -1, -1 };
 
-	
+	void BeginPlay()override {}
 	Vector2D GetLayoutOffset()const;//²¼¾ÖÆ«ÒÆ
 protected:
 	Transform transform;
@@ -89,7 +89,6 @@ public:
 	virtual ~Widget();
 
 	virtual void Update();
-	virtual void BeginPlay() {}
 	virtual void Render() {}
 	void ShowInfoBox();
 
@@ -134,7 +133,6 @@ protected:
 	Vector2D unitSize;
 	virtual void AdjustMemberPosition(Widget* member,int32 index) = 0;
 public:
-	Panel() { ; }
 	virtual ~Panel();
 
 	virtual void Update()override;
