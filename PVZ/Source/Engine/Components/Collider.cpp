@@ -291,6 +291,7 @@ void CircleCollider::Update()
 
 void CircleCollider::DrawDebugLine()
 {
+    setlinecolor(GREEN);
     Vector2D pos = (GetWorldPosition() - mainWorld.mainCamera->transform_virtual.position)
         * 20.f / mainWorld.mainCamera->springArmLength_virtual
         + Vector2D(WIN_WIDTH / 2, WIN_HEIGHT / 2);
@@ -320,6 +321,7 @@ void BoxCollider::Update()
 
 void BoxCollider::DrawDebugLine()
 {
+    setlinecolor(GREEN);
     Vector2D pos = (GetWorldPosition() - mainWorld.mainCamera->transform_virtual.position)
         * 20.f / mainWorld.mainCamera->springArmLength_virtual + Vector2D(WIN_WIDTH / 2, WIN_HEIGHT / 2);
     Vector2D si = this->size * 20.f / mainWorld.mainCamera->springArmLength_virtual;

@@ -1,6 +1,7 @@
 #include "BattleUI.h"
 #include "SeedUI.h"
 #include "GameplayStatics.h"
+#include "BattleController.h"
 
 
 BattleUI::BattleUI()
@@ -21,15 +22,27 @@ BattleUI::BattleUI()
 	Panel->SetSpacing(2);
 	Panel->SetLayer(-3);
 
-	for (int i = 1;i<9;i++)
+	SunShine = AddWidget<Text>();
+	SunShine->AttachTo(SeedBank);
+	SunShine->SetRelativePosition(Vector2D(38, 77));
+	SunShine->SetLayer(-2);
+	
+	for (int i = 1; i < 9; i++)
 	{
 		SeedUI* ui = GameplayStatics::CreateUI<SeedUI>();
-		ui->Load("card"+ std::to_string(i));
+		ui->Init(i);
 		Panel->AddMember(ui);
 	}
 }
 
+
 void BattleUI::Update()
 {
+	UserInterface::Update();
+
+	if (BattleController* pController = Cast<BattleController>(GameplayStatics::GetController()))
+	{
+		SunShine->SetText(std::to_string(pController->GetSunshineNum()), 4);
+	}
 
 }

@@ -13,8 +13,6 @@ class SceneComponent : public ActorComponent
 	void process_Destruct();
 
 public:
-	virtual void Update() override {}
-
 	//设置所属组件
 	void AttachTo(SceneComponent* par);
 

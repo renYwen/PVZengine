@@ -162,6 +162,8 @@ void Actor::AddRotation(float rot)
 
 void Actor::DrawDebugPosition() const
 {
+	settextstyle(25, 10, "Arial");
+	settextcolor(WHITE);
 	Vector2D pos = (GetWorldPosition() - mainWorld.mainCamera->transform_virtual.position)
 		* 20.f / mainWorld.mainCamera->springArmLength_virtual + Vector2D(WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	outtextxy((int)pos.x, (int)pos.y, GetWorldPosition().ToString().c_str());

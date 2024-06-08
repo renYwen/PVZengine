@@ -22,6 +22,8 @@ public:
 
 	void ShowInfoBoxs();
 
+	void DrawDebugRect();
+
 	template<class T>
 	T* AddWidget()
 	{

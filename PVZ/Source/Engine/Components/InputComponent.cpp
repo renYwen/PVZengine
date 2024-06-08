@@ -61,4 +61,4 @@ void InputComponent::EnableInput(bool enable)
 }
 
 Vector2D InputComponent::mousePos = {};
-bool InputComponent::bActive = false;
+bool InputComponent::bActive = true;

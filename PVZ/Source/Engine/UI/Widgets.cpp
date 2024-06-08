@@ -30,7 +30,7 @@ void Characters::SetCharacters(std::string text, int size, LPCTSTR type)
 		{
 			std::string buf = "$" + text[i + 1];
 			if (TextColorMap.find(buf) != TextColorMap.end())++i;
-			else ++temp;
+			else --temp;
 		}
 		else ++temp;
 	}
@@ -111,18 +111,15 @@ bool Widget::IsUnderCursor() const
 	int i = Math::Clamp((int)x / 100, 0, 7);
 	int j = Math::Clamp((int)y / 100, 0, 5);
 
-	if (!mainWorld.UIDetectZones[i][j].empty())
+	for (auto it = mainWorld.UIDetectZones[i][j].rbegin(); it != mainWorld.UIDetectZones[i][j].rend(); ++it)
 	{
-		for (auto it = mainWorld.UIDetectZones[i][j].rbegin(); it != mainWorld.UIDetectZones[i][j].rend(); ++it)
+		if (Widget* widget = Cast<Widget>(*it))
 		{
-			if (Widget* widget = Cast<Widget>(*it))
+			Vector2D loc = widget->GetScreenPosition();
+			if (x < GetSize().x / 2 + loc.x && x > loc.x - GetSize().x / 2 
+				&& y < GetSize().y / 2 + loc.y && y > loc.y - GetSize().y / 2 && widget == this)
 			{
-				Vector2D loc = widget->GetScreenPosition();
-				if (x < GetSize().x / 2 + loc.x && x > loc.x - GetSize().x / 2
-					&& y < GetSize().y / 2 + loc.y && y > loc.y - GetSize().y / 2)
-				{
-					return true;
-				}
+				return true;
 			}
 		}
 	}
@@ -161,6 +158,16 @@ void Widget::ShowInfoBox()
 		fillrectangle((int)pos.x, (int)pos.y, (int)pos.x + InfoText.GetWidth(), (int)pos.y + InfoText.GetHeight());
 		InfoText.PrintCharacters(pos);
 	}
+}
+
+void Widget::DrawDebugRect()
+{
+	setlinecolor(BLUE);
+	Vector2D pos = GetScreenPosition() - GetSize() / 2;
+	int left = int(pos.x), top = int(pos.y);
+	pos += GetSize();
+	int right = int(pos.x), bottom = int(pos.y);
+	rectangle(left, top, right, bottom);
 }
 
 void Widget::SetUIPattern(UIPattern pattern)
@@ -240,7 +247,6 @@ void Panel::Update()
 	int32 index = 0;
 	for (auto& member : members)
 	{
-		AdjustMemberSizeToUnit(member);
 		AdjustMemberPosition(member,index++);
 	}
 }
@@ -335,11 +341,12 @@ void Text::Update()
 {
 	Widget::Update();
 	if (bindedText)texts.SetCharacters(*bindedText);
+	size = Vector2D(float(texts.GetWidth()), float(texts.GetHeight()));
 }
 
 void Text::Render()
 {
-	texts.PrintCharacters(GetScreenPosition(), textPattern);
+	texts.PrintCharacters(GetScreenPosition()-size*0.5f, textPattern);
 }
 
 

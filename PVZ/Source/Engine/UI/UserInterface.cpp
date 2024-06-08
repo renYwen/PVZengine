@@ -22,6 +22,11 @@ void UserInterface::ShowInfoBoxs()
 	for (auto& widget : widgets) { widget->ShowInfoBox(); }
 }
 
+void UserInterface::DrawDebugRect()
+{
+	for (auto& widget : widgets) { widget->DrawDebugRect(); }
+}
+
 void UserInterface::AddToViewport()
 {
 	for (auto& widget : widgets)

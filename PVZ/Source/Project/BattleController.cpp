@@ -13,9 +13,6 @@ BattleController::BattleController()
 void BattleController::SetupInputComponent(InputComponent* inputComponent)
 {
 	Super::SetupInputComponent(inputComponent);
-
-	/*inputComponent->SetMapping("scroll", KeyCode::VK_RButton);
-	inputComponent->BindAction("scroll", InputType::Holding, []() {std::cout << "ok"; });*/
 }
 
 

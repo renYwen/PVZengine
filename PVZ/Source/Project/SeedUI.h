@@ -6,11 +6,16 @@
 class SeedUI :public UserInterface
 {
 	Button* button;
+
+	std::string name{};
+
+	int price = 0;
+
+	int number = 0;
 public:
 	SeedUI();
 
-	void Load(std::string name)
-	{
-		button->LoadNormalPicture(name);
-	}
+	void Init(int num);
+
+	virtual void Update()override;
 };

@@ -30,7 +30,7 @@ public:
 	//获取鼠标是否按下
 	bool IsMouseClicked() const;
 
-	//获取世界坐标系下鼠标所处位置的物体信息（该物体必须拥有碰撞体）
+	//获取世界坐标系下鼠标所处位置最顶层的物体信息（该物体必须拥有碰撞体）
 	HitResult GetHitResultUnderCursor();
 
 	//激活输入输出

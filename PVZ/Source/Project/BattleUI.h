@@ -7,6 +7,7 @@ class BattleUI :public UserInterface
 {
 	Image* SeedBank;
 	HorizontalPanel* Panel;
+	Text* SunShine;
 public:
 	BattleUI();
 

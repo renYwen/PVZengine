@@ -91,11 +91,12 @@ public:
 	virtual void Update();
 	virtual void Render() {}
 	void ShowInfoBox();
+	void DrawDebugRect();
 
 	void SetLayoutPattern(LayoutPattern pattern) { layoutPattern = pattern; }
 	void SetUIPattern(UIPattern pattern);
 	UIPattern GetUIPattern()const { return uiPattern; }
-	void SetInfoBox(bool showInfo) { bInfoBox = showInfo; }
+	void EnableInfoBox(bool showInfo) { bInfoBox = showInfo; }
 	void SetInfoText(std::string text) { InfoText.SetCharacters(text); }
 
 	virtual Vector2D GetSize() const;
