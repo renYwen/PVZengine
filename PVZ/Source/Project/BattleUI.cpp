@@ -27,7 +27,7 @@ BattleUI::BattleUI()
 	SunShine->SetRelativePosition(Vector2D(38, 77));
 	SunShine->SetLayer(-2);
 	
-	for (int i = 1; i < 9; i++)
+	for (int i = 0; i < 8; i++)
 	{
 		SeedUI* ui = GameplayStatics::CreateUI<SeedUI>();
 		ui->Init(i);

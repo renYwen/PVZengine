@@ -47,6 +47,8 @@ void ResourceManager::Initialize()
 	Load("card6", "Asset/images/cards/card6.png", 54, 77);
 	Load("card7", "Asset/images/cards/card7.png", 54, 77);
 	Load("card8", "Asset/images/cards/card8.png", 54, 77);
+	Load("black", "Asset/images/cards/black.png", 54, 77);
+	Load("gray", "Asset/images/cards/black.png", 54, 77);
 }
 
 

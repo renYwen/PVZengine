@@ -1,6 +1,5 @@
 #include "Controller.h"
 #include "Components/Camera.h"
-#include "Components/Collider.h"
 #include "Tools/Math.h"
 #include "Core/World.h"
 
@@ -28,7 +27,7 @@ void Controller::PeekInfo()
 
 Vector2D Controller::GetCursorPosition() const
 {
-	return InputComponent::GetMousePosition() + mainWorld.mainCamera->GetWorldPosition() - Vector2D(WIN_WIDTH,WIN_HEIGHT);
+	return InputComponent::GetMousePosition() + mainWorld.mainCamera->GetWorldPosition() - Vector2D(WIN_WIDTH,WIN_HEIGHT)/2;
 }
 
 bool Controller::IsMouseClicked() const

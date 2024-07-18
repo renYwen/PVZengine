@@ -5,3 +5,4 @@
 
 #define DECLARE_MULTI_PARAM_MULTICAST_DELEGATE_CLASS(Name, __VA_ARGS__) class Name : public MulticastDelegate<__VA_ARGS__> {};
 #define DECLARE_NO_PARAM_MULTICAST_DELEGATE_CLASS(Name) class Name : public MulticastDelegate<> {};
+#define DECLARE_NO_PARAM_UNICAST_DELEGATE_CLASS(Name) class Name : public UnicastDelegate<void> {};

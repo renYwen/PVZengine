@@ -8,7 +8,7 @@
 class Object
 {
 	static int tag;
-protected:
+
 	std::string name;
 public:
 	Object() { tag++; name = typeid(this).name() + std::string(" ") + std::to_string(tag); }

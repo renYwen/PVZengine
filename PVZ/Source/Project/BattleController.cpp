@@ -1,7 +1,8 @@
 #include "BattleController.h"
 #include "BattleUI.h"
 #include "GameplayStatics.h"
-
+#include "BasePlant.h"
+//#include "Sun.h"
 
 
 BattleController::BattleController()
@@ -13,6 +14,9 @@ BattleController::BattleController()
 void BattleController::SetupInputComponent(InputComponent* inputComponent)
 {
 	Super::SetupInputComponent(inputComponent);
+
+	inputComponent->SetMapping("Plant",KeyCode::VK_LButton);
+	inputComponent->BindAction("Plant",InputType::Pressed,this,&BattleController::PlantSeed);
 }
 
 
@@ -20,7 +24,22 @@ void BattleController::SetupInputComponent(InputComponent* inputComponent)
 void BattleController::Update()
 {
 	Super::Update();
+	
+	if (seedToPlant)
+	{
+		seedToPlant->SetLocalPosition(GetCursorPosition());
+		
+	}
+
+
 }
 
-
-
+void BattleController::PlantSeed()
+{
+	if (seedToPlant)
+	{
+		seedToPlant->Activate();
+		sunshine -= seedToPlant->GetCost();
+		seedToPlant = nullptr;
+	}
+}

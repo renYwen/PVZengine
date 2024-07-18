@@ -21,6 +21,9 @@ template<typename T, typename F>
 inline T * Cast(F * pBase)
 {
 	if(pBase)return dynamic_cast<T*>(pBase);
-	std::cout << "Cast Error!" <<std::endl;
+
+#ifdef _DEBUG
+	std::cout << "Cast Error!" << std::endl;
+#endif
 	return nullptr;
 }

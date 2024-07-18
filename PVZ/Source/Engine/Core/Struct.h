@@ -150,6 +150,7 @@ struct Pair
 	int x, y;
 	Pair() :x(0), y(0) {}
 	Pair(int x, int y) :x(x), y(y) {}
+	Pair(Vector2D vec) :x(int(vec.x)), y(int(vec.y)) {}
 	bool operator==(const Pair& another) const
 	{
 		return x == another.x && y == another.y;

@@ -2,6 +2,8 @@
 #include"Components/Collider.h"
 #include"Components/RigidBody.h"
 #include"Tools/Math.h"
+#include"GameplayStatics.h"
+#include"BattleController.h"
 
 
 Sun::Sun()
@@ -18,7 +20,7 @@ Sun::Sun()
 	collider = ConstructComponent<CircleCollider>();
 	collider->AttachTo(root);
 	collider->SetRadius(35);
-	/*collider->SetType(CollisionType::Sunshine);*/
+	
 
 	rigidbody = ConstructComponent<RigidBody>();
 	rigidbody->SetGraivty(350.f);
@@ -47,9 +49,32 @@ void Sun::Update()
 
 	if (bGrowing)
 	{
-		Vector2D scale = GetLocalScale()+Vector2D(1,1)*0.05f;
+		Vector2D scale = GetLocalScale() + Vector2D(1,1)*0.05f;
 		if (scale.x >= 1.f) { bGrowing = false; scale = { 1,1 }; }
 		SetLocalScale(scale);
+	}
+
+	if (bPicking)
+	{
+		if (BattleController* pController = Cast<BattleController>(GameplayStatics::GetController()))
+		{
+			if (GetWorldPosition().y > 25)return;
+			pController->SetSunshineNum(pController->GetSunshineNum() + 25);
+			Destroy();
+		}
+		return;
+	}
+	
+	if (Controller* pController = GameplayStatics::GetController())
+	{
+		if (collider->IsMouseOver() && pController->IsMouseClicked())
+		{
+			bPicking = true;
+			bFading = false;
+			rigidbody->SetGraivty(false);
+			rigidbody->SetMoveable(true);
+			rigidbody->SetVelocity((-GetWorldPosition() + Vector2D(25, 25)) * 1.25);
+		}
 	}
 }
 
@@ -60,3 +85,5 @@ void Sun::Throw(int groundLine)
 	bGrowing = true;
 	SetLocalScale(Vector2D(1,1)*0.1f);
 }
+
+

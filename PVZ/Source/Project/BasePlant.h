@@ -15,6 +15,8 @@ protected:
 	int cost = 0;
 public:
 	BasePlant();
-
+	virtual void BeginPlay()override;
 	void TakeDamage(float damage);
+	void Activate();
+	int GetCost()const { return cost; }
 };

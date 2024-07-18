@@ -35,11 +35,12 @@ void Animator::BeginPlay()
 
 void Animator::Update()
 {
-	if (!bIsEnabled||!rendererAttached||!aniNode)return;
+	if (!rendererAttached||!aniNode)return;
 
 	IMAGE* sprite = aniNode->images[aniNode->index];
 	if (currentSprite != sprite)
 	{
+		if (currentSprite && !bIsEnabled)return;
 		currentSprite = sprite;
 		rendererAttached->sprite = sprite;
 		rendererAttached->spriteInfo.offset = aniNode->offset;

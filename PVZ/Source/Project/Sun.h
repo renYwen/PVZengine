@@ -17,6 +17,7 @@ class Sun : public Sprite
 	Timer DestroyTimerHandle;
 	bool bFading = false;
 	bool bGrowing = false;
+	bool bPicking = false;
 public:
 	Sun();
 

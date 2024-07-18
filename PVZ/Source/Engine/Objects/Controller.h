@@ -1,10 +1,11 @@
 #pragma once
 #include"Components/InputComponent.h"
 #include"Actor.h"
+#include"Components/Collider.h"
 
 
 class Camera;
-struct HitResult;
+
 
 
 //Íæ¼Ò¿ØÖÆÆ÷Àà

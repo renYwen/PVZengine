@@ -29,7 +29,7 @@ class Animation final
 	void Tick();
 
 public:
-	Animation() { clock.Bind(0, this, &Animation::Tick, true); clock.Stop(); }
+	Animation() { clock.Bind(0, this, &Animation::Tick, true); clock.Stop();}
 
 	void Load(std::string name, Vector2D delta = {0,0});
 

@@ -15,10 +15,23 @@ BasePlant::BasePlant()
 	ani = ConstructComponent<Animator>();
 }
 
+void BasePlant::BeginPlay()
+{
+	Sprite::BeginPlay();
+	ani->Deactivate();
+	box->Deactivate();
+}
+
 void BasePlant::TakeDamage(float damage)
 {
 	blood -= damage;
 	Blink(0.2f, WHITE);
 
 	if (blood <= 0)Destroy();
+}
+
+void BasePlant::Activate()
+{
+	ani->Activate();
+	box->Activate();
 }
