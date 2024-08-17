@@ -180,3 +180,31 @@ struct Transform
 		return Transform(Vector2D(0, 0), 0, Vector2D(1, 1));
 	}
 };
+
+
+/* 材质结合方式 */
+enum class CombinePattern :unsigned char { Min, Mid, Max };
+
+/* 物理材质类 */
+struct PhysicsMaterial
+{
+	float friction;
+	float bounciness;
+	PhysicsMaterial() :friction(0.2f), bounciness(0) {}
+	PhysicsMaterial(float friction, float bounciness) 
+		:friction(friction), bounciness(bounciness) {}
+
+	//物理材质结合效果
+	static PhysicsMaterial Combine(const PhysicsMaterial& m1, const PhysicsMaterial& m2,CombinePattern pattern = CombinePattern::Mid)
+	{
+		if (pattern == CombinePattern::Mid)
+		{
+			return PhysicsMaterial((m1.friction + m2.friction) * 0.5f, (m1.bounciness + m2.bounciness) * 0.5f);
+		}
+		else 
+		{
+			return pattern == CombinePattern::Min ? PhysicsMaterial(std::min(m1.friction,m2.friction), std::min(m1.bounciness,m2.bounciness))
+				: PhysicsMaterial(std::max(m1.friction, m2.friction), std::max(m1.bounciness, m2.bounciness));
+		}
+	}
+};

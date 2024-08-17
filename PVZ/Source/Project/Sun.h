@@ -23,5 +23,7 @@ public:
 
 	void Update();
 
+	void Fall(int groundLine);
+
 	void Throw(int groundLine);
 };

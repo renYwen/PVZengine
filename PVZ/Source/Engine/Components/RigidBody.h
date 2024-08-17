@@ -2,7 +2,6 @@
 #include"Components/ActorComponent.h"
 
 
-
 /* 刚体组件 */
 class RigidBody final:public ActorComponent
 {
@@ -41,17 +40,28 @@ public:
 	//是否可旋转
 	void SetRotatable(bool rotatable) { this->bRotatable = rotatable;if(!rotatable)angularVelocity = 0; }
 
+	//设置线性阻尼
+	void SetLinearDrag(float linearDrag) { this->linearDrag = linearDrag; }
+
+	//设置角阻尼
+	void SetAngularDrag(float angularDrag) { this->angularDrag = angularDrag; }
+
 private:
 	Vector2D velocity = Vector2D(0, 0);
 	float maxSpeed = 1000.0f;
 	bool bMoveable = true;
+	
 	float gravity = 98.f;
 	bool bGravityEnabled = true;
+
 	float angularVelocity = 0;
 	bool bRotatable = true;
 	float mass = 1.0f;
 
+	float linearDrag = 0.f;
+	float angularDrag = 0.f;
+
 	std::unordered_set<Collider*> colliders;
 
-	void RestrictVelocity(Vector2D impactNormal,RigidBody* another = nullptr);
+	void RestrictVelocity(Vector2D impactNormal,const PhysicsMaterial& material,RigidBody* another = nullptr);
 };

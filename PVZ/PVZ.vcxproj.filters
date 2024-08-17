@@ -177,6 +177,9 @@
     <ClInclude Include="Source\Project\SeedUI.h">
       <Filter>Project\头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Project\CherryBomb.h">
+      <Filter>Project\头文件\Plants</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Project\BattleController.cpp">
@@ -283,6 +286,9 @@
     </ClCompile>
     <ClCompile Include="Source\Project\SeedUI.cpp">
       <Filter>Project\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Project\CherryBomb.cpp">
+      <Filter>Project\源文件\Plants</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

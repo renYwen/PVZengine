@@ -13,6 +13,8 @@ PeaShooter::PeaShooter()
 
 	shootEvent.Bind(this,&PeaShooter::Shoot);
 	idle.AddNotification(11,shootEvent);
+
+	cost = 100;
 }
 
 void PeaShooter::Shoot()

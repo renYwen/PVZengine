@@ -107,7 +107,8 @@ void Collider::Insert(Collider* another)
         if (another->mode == CollisionMode::Collision && this->mode == CollisionMode::Collision)
         {
             HitResult hitResult = this->CollisionHit(another);
-            if (rigidAttached)rigidAttached->RestrictVelocity(-hitResult.ImpactNormal, another->rigidAttached);
+            if (rigidAttached)rigidAttached->RestrictVelocity(-hitResult.ImpactNormal, 
+                PhysicsMaterial::Combine(this->material, another->material), another->rigidAttached);
             OnComponentHit.BroadCast(this, another, another->pOwner,-hitResult.ImpactNormal,hitResult);
             another->OnComponentHit.BroadCast(another, this, pOwner, hitResult.ImpactNormal, {hitResult.ImpactPoint,-hitResult.ImpactNormal,pOwner,this});
         }

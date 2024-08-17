@@ -10,7 +10,9 @@ class BattleController : public Controller
 	friend class SeedUI;
 	
 
-	Timer OverallTimeHandle;
+	Timer OverallTimerHandle;
+
+	Timer SunshineTimerHandle;
 
 	int sunshine = 100;
 
@@ -27,4 +29,6 @@ public:
 	void SetSunshineNum(int num) { sunshine = num; }
 
 	void PlantSeed();
+
+	void ProduceSunshine();
 };

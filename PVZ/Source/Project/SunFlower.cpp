@@ -11,6 +11,8 @@ SunFlower::SunFlower()
 	ani->SetNode("idle");
 
 	ProduceTimerHandle.Bind(20, [this]() {state = 1; }, true, 7.5);
+
+	cost = 50;
 }
 
 void SunFlower::Update()

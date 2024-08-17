@@ -23,18 +23,19 @@ Sun::Sun()
 	
 
 	rigidbody = ConstructComponent<RigidBody>();
-	rigidbody->SetGraivty(350.f);
-	
-	groundLine = Math::RandInt(100,500);
+	rigidbody->SetGraivty(400.f);
+
+	groundLine = Math::RandInt(100, 500);
 
 	DestroyTimerHandle.Bind(10, [this]() {bFading = true; });
 }
+
 
 void Sun::Update()
 {
 	Sprite::Update();
 
-	if (GetWorldPosition().y > groundLine) 
+	if (GetWorldPosition().y > groundLine && !bPicking) 
 	{ 
 		rigidbody->SetGravityEnabled(false); 
 		rigidbody->SetMoveable(false);
@@ -76,6 +77,15 @@ void Sun::Update()
 			rigidbody->SetVelocity((-GetWorldPosition() + Vector2D(25, 25)) * 1.25);
 		}
 	}
+}
+
+
+void Sun::Fall(int groundLine)
+{
+	rigidbody->SetGravityEnabled(false);
+	this->groundLine = groundLine;
+	rigidbody->SetVelocity(Vector2D(0,50));
+	DestroyTimerHandle.SetDelay(15);
 }
 
 void Sun::Throw(int groundLine)

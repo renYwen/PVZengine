@@ -90,6 +90,8 @@ public:
 	CollisionHitDelegate OnComponentHit;
 
 protected:
+	PhysicsMaterial material;
+
 	ColliderShape shape = ColliderShape::Circle;
 	//是否在鼠标所属世界坐标位置
 	virtual bool IsMouseOver() = 0;

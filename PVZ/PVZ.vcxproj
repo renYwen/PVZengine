@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Project\CherryBomb.h" />
     <ClInclude Include="Source\Project\SeedUI.h" />
     <ClInclude Include="Source\Project\BattleUI.h" />
     <ClInclude Include="Source\Engine\Components\ActorComponent.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="Source\Engine\Tools\LevelManager.cpp" />
     <ClCompile Include="Source\Engine\Tools\Math.cpp" />
     <ClCompile Include="Source\Project\BattleUI.cpp" />
+    <ClCompile Include="Source\Project\CherryBomb.cpp" />
     <ClCompile Include="Source\Project\NormalZombie.cpp" />
     <ClCompile Include="Source\Engine\Components\Particle.cpp" />
     <ClCompile Include="Source\Project\Pea.cpp" />

@@ -83,6 +83,6 @@ void SeedUI::ReadyToPlant()
 		case 1: pController->seedToPlant = GameplayStatics::CreateObject<SunFlower>(); break;
 		}
 
-		pController->sunshine -= plantPrice[number];
+		/*pController->sunshine -= plantPrice[number];*/
 	}
 }

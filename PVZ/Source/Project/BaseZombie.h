@@ -9,14 +9,14 @@ class BaseZombie :public Sprite
 	enum class ZombieState :uint8
 	{
 		Walking,Standing
-	}state;
+	}state = ZombieState::Walking;
 
 protected:
 	SpriteRenderer* renderer;
 	class BoxCollider* box;
 	class Animator* ani;
 
-	float blood = 100;
+	float blood = 10;
 	float speed = 0.2f;
 
 	Animation walk;
